@@ -1,5 +1,7 @@
+@import "fonts.css";
 @import "colors.css";
 @import "sizes.css";
+@import "page-title-screen.css";
 
 body {
 	background-color: var(--color-background);
@@ -10,6 +12,7 @@ body {
 }
 
 #gamearea {
+	position: relative;
 	width: var(--size-game-width);
 	height: var(--size-game-height);	
 	background-color: white;
