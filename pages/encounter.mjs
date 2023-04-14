@@ -21,23 +21,27 @@ export async function pageEncounter(selector, storyURL) {
 	console.log('story', story);
 	
 	const text = [];
-	const rawTags = [];	
+	// const rawTags = [];	
 	while (story.canContinue) {
 		text.push(story.Continue());
-		rawTags.push(...story.currentTags);
+		// rawTags.push(...story.currentTags);
 	}
 	bodyText.value = text;
 	choiceList.value = story.currentChoices;
 	
 	render(elm, html`
 		<h1>Encounter!</h1>
-		<p>
+		<p class='story-text'>
 			${html([bodyText.value.join('<br>')])}	
 		</p>
-		<ul>
-			${choiceList.value.map(item => html.for(item)`<li data-choice-id=${item.index} @click=${evt => console.log('click', evt)}>
+		<ul class='choice-list'>
+			${choiceList.value.map(item => html.for(item)`<li @click=${() => handleChoiceClick(item.index)}>
 				${item.text}	
 			</li>`)}	
 		</ul>
 	`);
+}
+
+function handleChoiceClick(choiceIdx) {
+	console.log('you picked', choiceIdx);	
 }

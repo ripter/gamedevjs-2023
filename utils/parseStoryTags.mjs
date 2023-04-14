@@ -4,8 +4,12 @@
  * Parses a list of story tags into a state object.
 */
 export function parseStoryTags(tagList) {
-	const tags = tagList.map(tag => {
-		const pair = tag.split(':');	
-		return {action: pair[0].trim(), value: pair[1].trim()};
-	});
+	return tagList
+		.map(tag => tag.split(':'))
+		.reduce((acc, pair) => {
+			const key = pair[0].trim();
+			const value = pair[1].trim();
+			acc[key] = value;
+			return acc;	
+		}, {});
 }
