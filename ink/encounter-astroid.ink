@@ -9,11 +9,11 @@ While on duty in the Outer Decks district, you receive an urgent alert about inc
 
 Your quick thinking and piloting skills will be critical in navigating through this dangerous situation.
 
-* Attempt to pilot a smaller ship equipped with laser cannons to shoot down the meteors before they collide with the Celestial.
+* Attempt to pilot a smaller ship equipped with laser cannons to shoot down the meteors before they collide with the Celestial. # DC: 6
     -> pilot_ship
-* Reroute power from non-essential systems to the ship's external shields in an attempt to minimize damage.
+* Reroute power from non-essential systems to the ship's external shields in an attempt to minimize damage. # DC: 10
     -> reroute_power
-* Analyze the meteor shower's trajectory and attempt to find a safer path for the Celestial, making a course adjustment to avoid the majority of the meteors.
+* Analyze the meteor shower's trajectory and attempt to find a safer path for the Celestial, making a course adjustment to avoid the majority of the meteors. # DC: 18
     -> move_ship
 
 
