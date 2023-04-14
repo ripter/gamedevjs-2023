@@ -1,6 +1,9 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 // import { signal, computed, effect } from '../libs/usignal.0.9.0.js';
 
+/**
+ * Page that shows the Title Screen.
+*/
 export function pageTitleScreen(selector) {
 	const elm = document.querySelector(selector);
 	elm.className = 'page-title-screen';

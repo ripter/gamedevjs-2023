@@ -2,6 +2,7 @@
 @import "colors.css";
 @import "sizes.css";
 @import "page-title-screen.css";
+@import "page-encounter-screen.css";
 
 body {
 	background-color: var(--color-background);
