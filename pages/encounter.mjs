@@ -1,7 +1,7 @@
-import { Story } from '../libs/ink-es6.js';
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, computed, effect } from '../libs/usignal.0.9.0.js';
 
+import { loadStory } from '../utils/loadStory.mjs';
 import { parseStoryTags } from '../utils/parseStoryTags.mjs';
 
 /**
@@ -9,19 +9,14 @@ import { parseStoryTags } from '../utils/parseStoryTags.mjs';
  * Encounters serve as the central gameplay mechanism, providing players with an engaging challenge that tests their abilities, strategies, and luck, and ultimately determines their success or failure in the game.
 */
 export async function pageEncounter(selector, storyURL) {
+	const story = await loadStory(storyURL);
+	console.log('story', story);
 	const elm = document.querySelector(selector);
 	elm.className = 'page-encounter-screen';
 	const state = signal({});
 	const bodyText = signal('');
 	const choiceList = signal([]);
-	
-	// fetch the JSON file
-	const response = await fetch(storyURL);	
-	if (!response.ok) {
-		throw new Error(`Failed to fetch story: "${newValue}"\nError: ${response.statusText}`)
-	}
-	const story = new Story(await response.json());
-	console.log('story', story);
+		
 	
 	const text = [];
 	const tagList = [];	
