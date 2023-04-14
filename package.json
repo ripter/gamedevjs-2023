@@ -1,0 +1,17 @@
+{
+  "name": "gamedevjs-2023",
+  "version": "0.0.1",
+  "description": "Entry for Gamedev.JS Jam 2023",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "eslint **/*.mjs"
+  },
+  "author": "ripter",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "jest": "^29.5.0"
+  }
+}

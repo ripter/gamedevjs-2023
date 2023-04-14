@@ -9,3 +9,27 @@ Example using python:
 ```
 	python3 -m http.server 8000
 ```
+
+
+## Running tests
+
+Tests and linting are run from nodejs. You will need to have that installed first.
+
+Install/Update npm tools
+
+```
+	npm update
+```
+
+Run eslint
+
+```
+  npm run lint
+```
+
+Run tests
+
+```
+	npm run test
+```
+
