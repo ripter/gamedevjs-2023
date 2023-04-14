@@ -1,0 +1,17 @@
+@import "colors.css";
+@import "sizes.css";
+
+body {
+	background-color: var(--color-background);
+	color: var(--color-foreground);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#gamearea {
+	width: var(--size-game-width);
+	height: var(--size-game-height);	
+	background-color: white;
+	border: thin solid #111;
+}
