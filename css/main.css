@@ -3,7 +3,7 @@
 
 body {
 	background-color: var(--color-background);
-	color: var(--color-foreground);
+	/* color: var(--color-foreground); */
 	display: flex;
 	justify-content: center;
 	align-items: center;
