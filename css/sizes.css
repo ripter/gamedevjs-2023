@@ -1,4 +1,8 @@
 * {
 	--size-game-width: 768px;
 	--size-game-height: 512px;
+	
+	--size-large: 20px;
+	--size-default: 16px;
+	--size-detail: 14px;
 }

@@ -1,9 +1,9 @@
-import { parseStoryTags } from './parseStoryTags.mjs';
+import { parseTags } from './parseTags.mjs';
 
-describe('parseStoryTags', () => {
+describe('parseTags', () => {
 	test('Loads basic tag', () => {
 		const tagList = ['background: encounter-astroid.png'];	
-		expect(parseStoryTags(tagList)).toEqual({
+		expect(parseTags(tagList)).toEqual({
 			background: 'encounter-astroid.png',
 		});
 	});	

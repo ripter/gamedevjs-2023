@@ -2,7 +2,8 @@ import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, computed, effect } from '../libs/usignal.0.9.0.js';
 
 import { loadStory } from '../utils/loadStory.mjs';
-import { parseStoryTags } from '../utils/parseStoryTags.mjs';
+import { parseTags } from '../utils/parseTags.mjs';
+import { ChoiceEnounter } from '../components/ChoiceEncounter.mjs';
 
 /**
  * Page for Encounters.
@@ -22,24 +23,25 @@ export async function pageEncounter(selector, storyURL) {
 	const tagList = [];	
 	while (story.canContinue) {
 		text.push(story.Continue());
+		// text.push(html`<p>${story.Continue()}</p>`);
 		tagList.push(...story.currentTags);
 	}
-	bodyText.value = text.join('<br>');
+	// bodyText.value = text.map(.join('<br>');
+	console.log('text', text);
+	bodyText.value = text.map(val => html`<p>${val}</p>`);
 	choiceList.value = story.currentChoices;
-	const tagState = parseStoryTags(tagList);
+	const tagState = parseTags(tagList);
 	state.value = {...state.value, ...tagState};
-	console.log('state', state.value);
+	
 	
 	elm.style.backgroundImage = `url(./imgs/${tagState.background})`;
 	render(elm, html`
 		<h1>Encounter: ${state.value.title}!</h1>
-		<p class='story-text'>
-			${html([bodyText.value])}	
-		</p>
-		<ul class='choice-list'>
-			${choiceList.value.map(item => html.for(item)`<li @click=${() => handleChoiceClick(item.index)}>
-				${item.text}	
-			</li>`)}	
+		<div class='story-text'>
+			${bodyText.value}	
+		</div>
+		<ul class=${`choice-list --count-${choiceList.value.length}`}>
+			${choiceList.value.map(item => ChoiceEnounter(item, handleChoiceClick))}
 		</ul>
 	`);
 }

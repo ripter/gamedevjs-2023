@@ -3,4 +3,10 @@
 	--color-foreground: #7FDBFF;
 	
 	--color-yellow: #FFDC00;
+	
+	--color-guaranteed: #8BC34A;
+	--color-easy: #4CAF50;
+	--color-moderate: #FFEB3B;
+	--color-challenging: #FF9800;
+	--color-impossible: #F44336;
 }

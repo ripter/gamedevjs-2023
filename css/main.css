@@ -1,6 +1,10 @@
+/* Base Styles */
 @import "fonts.css";
 @import "colors.css";
 @import "sizes.css";
+/* Component Styles */
+@import "choice-encounter.css";
+/* Page Styles */
 @import "page-title-screen.css";
 @import "page-encounter-screen.css";
 

@@ -5,16 +5,21 @@
 # background: observation-window.png
 # title: Meteor Shower Alert
 
-While on duty in the Outer Decks district, you receive an urgent alert about incoming astroids. The astroids are on a collision course with the Celestial, posing a significant threat to the ship's hull and vital systems.
+While on duty in the Outer Decks district, an urgent alert warns of incoming asteroids. These pose a significant threat to the Celestial's hull and vital systems.
 
-Your quick thinking and piloting skills will be critical in navigating through this dangerous situation.
+Your quick thinking and piloting skills are crucial to navigate this danger.
 
-* Attempt to pilot a smaller ship equipped with laser cannons to shoot down the meteors before they collide with the Celestial. # DC: 6
+* Pilot a smaller ship with laser cannons to destroy the asteroids.# DC: 6 # skill: piloting
     -> pilot_ship
-* Reroute power from non-essential systems to the ship's external shields in an attempt to minimize damage. # DC: 10
+    
+* Reroute power to the external shields to minimize damage. # DC: 10 # skill: programming
     -> reroute_power
-* Analyze the meteor shower's trajectory and attempt to find a safer path for the Celestial, making a course adjustment to avoid the majority of the meteors. # DC: 18
+    
+* Analyze the asteroid trajectory to find a safer path and adjust the Celestial's course. # DC: 18 #skill: piloting
     -> move_ship
+
+* Coordinate with engineers to deploy repair drones for damage control. # DC: 3 # skill: management
+    -> repair_damage
 
 
 
@@ -29,4 +34,8 @@ You attempt to reroute power.
 
 === move_ship ===
 You attempt to change the ship's course.
+-> END
+
+=== repair_damage ===
+You attempt to repair the damage.
 -> END

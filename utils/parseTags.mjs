@@ -3,7 +3,7 @@
 /**
  * Parses a list of story tags into a state object.
 */
-export function parseStoryTags(tagList) {
+export function parseTags(tagList) {
 	return tagList
 		.map(tag => tag.split(':'))
 		.reduce((acc, pair) => {
