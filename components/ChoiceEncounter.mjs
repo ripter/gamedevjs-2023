@@ -11,7 +11,6 @@ import { determineDifficulty } from '../utils/determineDifficulty.mjs';
 */
 export function ChoiceEnounter(choiceItem, onClick) {
 	const { text, index, tags } = choiceItem;
-	console.log('tags', tags);
 	const state = parseTags(tags);
 	const skillLevel = window.player.skills[state.skill];
 	const DC = parseInt(state.DC, 10);

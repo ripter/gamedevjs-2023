@@ -26,11 +26,10 @@ export async function pageEncounter(selector, storyURL) {
 		const { skill } = inkStory.variablesState;
 		const skillLevel = window.player.skills[skill];
 		const diceResults = rollDice(skillLevel);
-		console.log('diceresults', diceResults, 'skill', skill)
 		inkStory.variablesState['currentDiceTotal'] = diceResults.reduce((acc, value) => {return acc + value}, 0);
 		return diceResults.join(', ');
 	});
-	console.log('story', inkStory);
+	// console.log('story', inkStory);
 	const elm = document.querySelector(selector);
 	elm.className = 'page-encounter-screen';
 
@@ -59,7 +58,6 @@ export async function pageEncounter(selector, storyURL) {
  * Clicking on a choice
 */
 function handleChoiceClick(choiceIdx, skill, isRolling) {
-	console.log('handleChoiceClick', skill);
 	const prevIsRolling = inkStory.variablesState['isRolling'];
 	// Update State Vars
 	inkStory.variablesState['skill'] = skill;

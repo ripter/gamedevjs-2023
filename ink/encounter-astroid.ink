@@ -18,7 +18,7 @@ While on duty in the Outer Decks district, an urgent alert warns of incoming ast
 
 Your quick thinking and piloting skills are crucial to navigate this danger.
 
-* Pilot a smaller ship with laser cannons to destroy the asteroids. # DC: 6 # skill: piloting
+* [Pilot an attack ship with laser cannons to destroy the asteroids. #DC: 6 #skill: piloting]
     -> pilot_ship
     
 * Reroute power to the external shields to minimize damage. # DC: 10 # skill: programming
@@ -40,13 +40,15 @@ You roll {dice} for a total of {currentDiceTotal}
 
 { 
 - turnsLeft > 0:
-    + {currentDiceTotal >= 6} With your exceptional piloting skills, you skillfully navigate the asteroids and take them all down with your laser cannons.
+    + {currentDiceTotal >= 6} [Shoot down the asteroids.]
         -> pilot_ship.best_result
-    + {currentDiceTotal >= 5} You effectively destroy most of the asteroids, but a few manage to slip past your defenses.
+    + {currentDiceTotal == 5} [Shoot down the asteroids.]
         -> pilot_ship.decent_result
-    + {currentDiceTotal >= 1} Your ship collides with an asteroid, damaging the ship and putting your life in danger.
+    + {currentDiceTotal > 1 && currentDiceTotal < 5} [Shoot down the asteroids.]
+        -> pilot_ship.ok_result
+    + {currentDiceTotal == 1} [Shoot down the asteroids.]
         -> pilot_ship.worst_result
-    + Spend TIME thinking and re-roll.
+    + [Spend TIME thinking and re-roll.]
         -> pilot_ship
 - else:
     + You Ran out of time.
@@ -58,15 +60,15 @@ You roll {dice} for a total of {currentDiceTotal}
 
 
 = best_result
-You are perfect, amazing job.
+With your exceptional piloting skills, you skillfully navigate the asteroids and take them all down with your laser cannons.
 -> END
 
 = worst_result 
-You suck, worst possible result.
+Your ship collides with an asteroid, damaging the ship and putting your life in danger.
 -> END
 
 = decent_result
-No the best but you avoided the worst of the damage.
+You effectively destroy most of the asteroids, but a few manage to slip past your defenses.
 -> END
 
 = ok_result
