@@ -11,25 +11,60 @@
 
 
 === start ===
-# background: observation-window.png
-# title: Meteor Shower Alert
+#background: observation-window.png
+#title: Meteor Shower Alert
 
-While on duty in the Outer Decks district, an urgent alert warns of incoming asteroids. These pose a significant threat to the Celestial's hull and vital systems.
+While on duty in the Outer Decks district, Mother sends out an urgent Alert. A swarm of asteroids have suddenly appeared in the ships flight path. These pose a significant threat to the Celestial's hull and vital systems.
 
-Your quick thinking and piloting skills are crucial to navigate this danger.
+You must act quickly before TIME runs out and the ship is struck. Which team will you join?
 
-* [Pilot an attack ship with laser cannons to destroy the asteroids. #DC: 6 #skill: piloting]
-    -> pilot_ship
+    * [Pilot an attack craft and destroy the asteroids with maser cannons. #DC: 6 #skill: piloting]
+    -> attack_rocks
     
-* Reroute power to the external shields to minimize damage. # DC: 10 # skill: programming
+    * Reroute power to the external shields to minimize damage. # DC: 10 # skill: programming
     -> reroute_power
     
-* Analyze the asteroid trajectory to find a safer path and adjust the Celestial's course. # DC: 18 #skill: piloting
+    * Analyze the asteroid trajectory to find a safer path and adjust the Celestial's course. # DC: 18 #skill: piloting
     -> move_ship
 
-* Coordinate with engineers to deploy repair drones for damage control. # DC: 3 # skill: management
+    * Coordinate with engineers to deploy repair drones for damage control. # DC: 3 # skill: management
     -> repair_damage
 
+
+
+
+=== attack_rocks ===
+#damage: (Big Rock, Critical Systems, Debris)
+~ rollDice()
+
+With your Piloting skill, you have {currentDiceTotal} TIME to spend attacking rocks.
+
+    * [Destroy the largest rocks. #cost: 2] 
+    -> attack_rocks.break_large_rocks
+    
+    * [Focus on rocks heading for critical systems #cost: 3]
+    -> attack_rocks.protect_critical_systems
+    
+    
+= break_large_rocks
+#prevent: Big Rock
+#cause: (+1, Debris)
+~ currentDiceTotal = currentDiceTotal - 2
+
+You focused your masors on the largest of the asteroid breaking them up into small debris. You prevented {critical|significant|massive} damage to the {Outer Deck|Agricultural Zone|Residential Districts}.
+
+{
+- currentDiceTotal > 0:
+    + Take another action.
+    -> attack_rocks
+- else:
+    + Return to the Celestial.
+    -> END
+}
+
+= protect_critical_systems
+Use the ship's weapons to target the smaller rocks that are on a collision course with critical ship systems. This will prevent damage to important systems and reduce the risk of critical failure.
+-> END
 
 
 === pilot_ship ===
