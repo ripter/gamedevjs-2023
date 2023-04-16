@@ -11,13 +11,13 @@ import { determineDifficulty } from '../utils/determineDifficulty.mjs';
 */
 export function ChoiceEnounter(choiceItem, onClick) {
 	const { text, index, tags } = choiceItem;
+	console.log('tags', tags);
 	const state = parseTags(tags);
 	const skillLevel = window.player.skills[state.skill];
 	const DC = parseInt(state.DC, 10);
 	const difficulty = determineDifficulty(skillLevel, DC);
-	console.log('state', state);
 	
-	return html.for(choiceItem)`<li class="choice-encounter" @click=${() => onClick(value)}>
+	return html.for(choiceItem)`<li class="choice-encounter" @click=${() => onClick(index, state.skill, true)}>
 		<span class="text">${text}</span>
 		<p class="challenge">(
 			<span class="skill">${state.skill}</span>

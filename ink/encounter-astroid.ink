@@ -1,3 +1,12 @@
+ EXTERNAL rollDice()
+ 
+ VAR skill = ""
+ VAR currentDiceTotal = 5
+ VAR turnsLeft = 3
+ VAR isRolling = false
+
+
+
 -> start
 
 
@@ -9,7 +18,7 @@ While on duty in the Outer Decks district, an urgent alert warns of incoming ast
 
 Your quick thinking and piloting skills are crucial to navigate this danger.
 
-* Pilot a smaller ship with laser cannons to destroy the asteroids.# DC: 6 # skill: piloting
+* Pilot a smaller ship with laser cannons to destroy the asteroids. # DC: 6 # skill: piloting
     -> pilot_ship
     
 * Reroute power to the external shields to minimize damage. # DC: 10 # skill: programming
@@ -24,8 +33,49 @@ Your quick thinking and piloting skills are crucial to navigate this danger.
 
 
 === pilot_ship ===
-You attempt to pilot a ship.
+VAR dice = ()
+~ dice = rollDice()
+
+You roll {dice} for a total of {currentDiceTotal}
+
+{ 
+- turnsLeft > 0:
+    + {currentDiceTotal >= 6} With your exceptional piloting skills, you skillfully navigate the asteroids and take them all down with your laser cannons.
+        -> pilot_ship.best_result
+    + {currentDiceTotal >= 5} You effectively destroy most of the asteroids, but a few manage to slip past your defenses.
+        -> pilot_ship.decent_result
+    + {currentDiceTotal >= 1} Your ship collides with an asteroid, damaging the ship and putting your life in danger.
+        -> pilot_ship.worst_result
+    + Spend TIME thinking and re-roll.
+        -> pilot_ship
+- else:
+    + You Ran out of time.
+        -> END
+}
+
+
+
+
+
+= best_result
+You are perfect, amazing job.
 -> END
+
+= worst_result 
+You suck, worst possible result.
+-> END
+
+= decent_result
+No the best but you avoided the worst of the damage.
+-> END
+
+= ok_result
+Well at least you tried. It could have been a lot worse.
+-> END
+
+
+
+
 
 
 === reroute_power ===
