@@ -22,14 +22,14 @@ effect(() => {
 */
 export async function pageEncounter(selector, storyURL) {
 	inkStory = await loadStory(storyURL);
+	//
+	// rollDice function. Rolls dice and sets the "time" variable with the result.
 	inkStory.BindExternalFunction('rollDice', (skillName) => {
-		console.log('roll dice for skill', skillName);
 		const skillLevel = window.player.skills[skillName];
 		const diceResults = rollDice(skillLevel);
 		inkStory.variablesState['time'] = diceResults.reduce((acc, value) => {return acc + value}, 0);
-		// return diceResults.join(', ');
 	});
-	// console.log('story', inkStory);
+	
 	const elm = document.querySelector(selector);
 	elm.className = 'page-encounter-screen';
 
