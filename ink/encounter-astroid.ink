@@ -1,10 +1,6 @@
- EXTERNAL rollDice()
+EXTERNAL rollDice(skillName)
  
- VAR skill = ""
- VAR currentDiceTotal = 5
- VAR turnsLeft = 3
- VAR isRolling = false
-
+VAR time = -1
 
 
 -> start
@@ -13,10 +9,11 @@
 === start ===
 #background: observation-window.png
 #title: Meteor Shower Alert
+#choiceType: skill-check
 
 While on duty in the Outer Decks district, Mother sends out an urgent Alert. A swarm of asteroids have suddenly appeared in the ships flight path. These pose a significant threat to the Celestial's hull and vital systems.
 
-You must act quickly before TIME runs out and the ship is struck. Which team will you join?
+You must act quickly before TIME runs out and the ship is suffers {significant|massive} damage. Which team will you join?
 
     * [Pilot an attack craft and destroy the asteroids with maser cannons. #DC: 6 #skill: piloting]
     -> attack_rocks
@@ -34,81 +31,69 @@ You must act quickly before TIME runs out and the ship is struck. Which team wil
 
 
 === attack_rocks ===
-#damage: (Big Rock, Critical Systems, Debris)
-~ rollDice()
+#choiceType: time-cost
+{ time == -1:
+    ~ rollDice("piloting")
+}
 
-With your Piloting skill, you have {currentDiceTotal} TIME to spend attacking rocks.
 
-    * [Destroy the largest rocks. #cost: 2] 
-    -> attack_rocks.break_large_rocks
+With your Piloting skill, you have {time} TIME to spend attacking rocks.
+
+
+    * {time >= 2} [Destroy the largest rocks. #cost: 2] 
+        -> attack_rocks.break_large_rocks
+
+    * {time >= 3} [Focus on rocks heading for critical systems. #cost: 3]
+        -> attack_rocks.protect_critical_systems
+
+    * {time >= 1} [Use your shields to absorb smaller debris. #cost: 1]
+    -> attack_rocks.use_shields
+
+    * {time >= 4} [Nudge Large rocks into sweeping clear debris. #cost: 4]
+        -> attack_rocks.nudge_rocks
     
-    * [Focus on rocks heading for critical systems #cost: 3]
-    -> attack_rocks.protect_critical_systems
-    
+    + {time == 0 || CHOICE_COUNT() < 3 } [Return to the Celestial.]
+        -> END
+
+        
     
 = break_large_rocks
-#prevent: Big Rock
-#cause: (+1, Debris)
-~ currentDiceTotal = currentDiceTotal - 2
+~ time = time - 2
 
 You focused your masors on the largest of the asteroid breaking them up into small debris. You prevented {critical|significant|massive} damage to the {Outer Deck|Agricultural Zone|Residential Districts}.
 
-{
-- currentDiceTotal > 0:
-    + Take another action.
-    -> attack_rocks
-- else:
+    + {time > 0} [Take another action.]
+        -> attack_rocks
     + Return to the Celestial.
     -> END
-}
 
 = protect_critical_systems
+~ time = time - 3
 Use the ship's weapons to target the smaller rocks that are on a collision course with critical ship systems. This will prevent damage to important systems and reduce the risk of critical failure.
--> END
 
-
-=== pilot_ship ===
-VAR dice = ()
-~ dice = rollDice()
-
-You roll {dice} for a total of {currentDiceTotal}
-
-{ 
-- turnsLeft > 0:
-    + {currentDiceTotal >= 6} [Shoot down the asteroids.]
-        -> pilot_ship.best_result
-    + {currentDiceTotal == 5} [Shoot down the asteroids.]
-        -> pilot_ship.decent_result
-    + {currentDiceTotal > 1 && currentDiceTotal < 5} [Shoot down the asteroids.]
-        -> pilot_ship.ok_result
-    + {currentDiceTotal == 1} [Shoot down the asteroids.]
-        -> pilot_ship.worst_result
-    + [Spend TIME thinking and re-roll.]
-        -> pilot_ship
-- else:
-    + You Ran out of time.
+    + {time > 0} [Take another action.]
+        -> attack_rocks
+    + Return to the Celestial.
         -> END
-}
 
 
+= use_shields
+~ time = time - 1
+You use your attack skip as a ram, letting the smaller debris impact your shields instead of hitting the Celestial hall.
 
+    + {time > 0} [Take another action.]
+        -> attack_rocks
+    + Return to the Celestial.
+        -> END
 
+= nudge_rocks
+~ time = time - 4
+With persision shooting, you manage the change the directory of several large asteroids. They sweep clear a path of debris before flying safely away from the Celestial.
 
-= best_result
-With your exceptional piloting skills, you skillfully navigate the asteroids and take them all down with your laser cannons.
--> END
-
-= worst_result 
-Your ship collides with an asteroid, damaging the ship and putting your life in danger.
--> END
-
-= decent_result
-You effectively destroy most of the asteroids, but a few manage to slip past your defenses.
--> END
-
-= ok_result
-Well at least you tried. It could have been a lot worse.
--> END
+    + {time > 0} [Take another action.]
+        -> attack_rocks
+    + Return to the Celestial.
+        -> END
 
 
 

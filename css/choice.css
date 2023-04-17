@@ -1,0 +1,16 @@
+.choice {
+	border: thin solid white;	
+	cursor: pointer;
+	background-color: #111111BB;
+	padding: 0.5em;
+	box-shadow: #ddd 3px 5px 8px;
+}
+.choice:hover {
+	box-shadow: var(--color-yellow) 3px 5px 8px;
+}
+
+.choice .text {
+	font-weight: bold;
+	font-family: Raleway;
+	line-height: 120%;
+}

@@ -5,25 +5,14 @@
 	justify-content: space-between;
 }
 
+.page-encounter-screen h1 {
+	margin: 0 1em;
+	margin-top: 0.5em;
+}
+
 .page-encounter-screen .story-text {
+	font-family: Raleway;
 	font-size: var(--size-large);	
 	margin: 1em;
 	background-color: #111111BB;
-}
-
-.page-encounter-screen .choice-list {
-	list-style: none;	
-	display: flex;
-	padding: 0;
-}
-.page-encounter-screen .choice-list.--count-4 {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-	grid-gap: 1em;
-	margin: 1em;
-}
-
-.skill {
-	text-transform: capitalize;
 }

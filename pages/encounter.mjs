@@ -4,7 +4,7 @@ import { signal, computed, effect } from '../libs/usignal.0.9.0.js';
 import { loadStory } from '../utils/loadStory.mjs';
 import { parseTags } from '../utils/parseTags.mjs';
 import { rollDice } from '../utils/rollDice.mjs';
-import { ChoiceEnounter } from '../components/ChoiceEncounter.mjs';
+import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
 
 /* Page Variables */
 const state = signal({});
@@ -22,12 +22,12 @@ effect(() => {
 */
 export async function pageEncounter(selector, storyURL) {
 	inkStory = await loadStory(storyURL);
-	inkStory.BindExternalFunction('rollDice', () => {
-		const { skill } = inkStory.variablesState;
-		const skillLevel = window.player.skills[skill];
+	inkStory.BindExternalFunction('rollDice', (skillName) => {
+		console.log('roll dice for skill', skillName);
+		const skillLevel = window.player.skills[skillName];
 		const diceResults = rollDice(skillLevel);
-		inkStory.variablesState['currentDiceTotal'] = diceResults.reduce((acc, value) => {return acc + value}, 0);
-		return diceResults.join(', ');
+		inkStory.variablesState['time'] = diceResults.reduce((acc, value) => {return acc + value}, 0);
+		// return diceResults.join(', ');
 	});
 	// console.log('story', inkStory);
 	const elm = document.querySelector(selector);
@@ -40,31 +40,28 @@ export async function pageEncounter(selector, storyURL) {
 	// Render the page.
 	effect(() => {
 		const { tagState, body, choiceList, turnsLeft } = state.value;
-		elm.style.backgroundImage = `url(./imgs/${tagState.background})`;
+		const { choiceType, background, title } = tagState;
+		console.log('tagState', tagState);
+		const Choice = getChoiceComponent(choiceType);
+		
+		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
-			<h1>Encounter: ${tagState.title}!</h1>
+			<h1>Encounter: ${title}!</h1>
 			<div class='story-text'>
 				${body}	
-				<span>${`${turnsLeft} Turns left.`}</span>
 			</div>
 			<ul class=${`choice-list --count-${choiceList.length}`}>
-				${choiceList.map(item => ChoiceEnounter(item, handleChoiceClick))}
+				${choiceList.map(item => Choice(item, handleChoiceClick))}
 			</ul>
 		`);
 	});	
 }
 
+
 /**
  * Clicking on a choice
 */
-function handleChoiceClick(choiceIdx, skill, isRolling) {
-	const prevIsRolling = inkStory.variablesState['isRolling'];
-	// Update State Vars
-	inkStory.variablesState['skill'] = skill;
-	isRolling: inkStory.variablesState['isRolling'] = isRolling;
-	if (prevIsRolling) {
-		inkStory.variablesState['turnsLeft'] = state.value.turnsLeft - 1;
-	}
+function handleChoiceClick(choiceIdx) {
 	// Select the choice
 	inkStory.ChooseChoiceIndex(choiceIdx);
 	// Run the Story
@@ -88,9 +85,9 @@ function runFlow() {
 	state.value = {
 		body: text.map(val => html`<p>${val}</p>`),
 		choiceList: inkStory.currentChoices,
-		turnsLeft: inkStory.variablesState['turnsLeft'],
-		isRolling: inkStory.variablesState['isRolling'],
-		skill: inkStory.variablesState['skill'],
+		// turnsLeft: inkStory.variablesState['turnsLeft'],
+		// isRolling: inkStory.variablesState['isRolling'],
+		// skill: inkStory.variablesState['skill'],
 		tagState: {
 			...state.value.tagState,
 			...tagState,

@@ -1,0 +1,28 @@
+
+.choice-skill-check .challenge {
+	margin: 0;
+	text-align: right;
+	font-family: ChivoMono;
+	margin-top: 1em;
+	font-size: var(--size-detail);
+}
+
+.choice-skill-check  .skill {
+	text-transform: capitalize;
+}
+
+.choice-skill-check .difficulty.--guaranteed {
+	color: var(--color-guaranteed);
+}
+.choice-skill-check .difficulty.--easy {
+	color: var(--color-easy);
+}
+.choice-skill-check .difficulty.--moderate {
+	color: var(--color-moderate);
+}
+.choice-skill-check .difficulty.--challenging {
+	color: var(--color-challenging);
+}
+.choice-skill-check .difficulty.--impossible {
+	color: var(--color-impossible);
+}

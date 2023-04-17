@@ -1,0 +1,26 @@
+.choice-list {
+	list-style: none;	
+	display: flex;
+	padding: 0;
+}
+
+.choice-list.--count-2,
+.choice-list.--count-4 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-gap: 1em;
+	margin: 1em;
+}
+
+.choice-list.--count-1,
+.choice-list.--count-3 {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-row-gap: 1em;
+}
+
+.choice-list.--count-1 {
+	grid-template-rows: 1fr 1fr;	
+}
+
