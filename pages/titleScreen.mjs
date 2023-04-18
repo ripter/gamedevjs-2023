@@ -4,7 +4,7 @@ import { render, html } from '../libs/uhtml/index.mjs';
 /**
  * Page that shows the Title Screen.
 */
-export function pageTitleScreen(selector) {
+export function pageTitleScreen(selector, onClick) {
 	const elm = document.querySelector(selector);
 	elm.className = 'page-title-screen';
 	
@@ -15,7 +15,7 @@ export function pageTitleScreen(selector) {
 			<h3>By <a href="https://github.com/ripter">ripter</a></h3>
 		</header>
 		<footer>
-			<button type="button">Start Game</button>	
+			<button type="button" @click=${() => onClick()}>Start Game</button>	
 		</footer>
 	`);	
 }
