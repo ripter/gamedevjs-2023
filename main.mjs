@@ -17,19 +17,10 @@ window.ship = new Ship();
 const currentPage = window.currentPage = signal({
 	url: 'intro',
 	args: [clickToEncounter('encounter-astroid')],
-	// args: [() => {
-	// 	console.log('You Clicked me!');
-	// 	currentPage.value = {
-	// 		url: 'encounter',
-	// 		args: ['ink/encounter-astroid.json'],
-	// 	};
-	// }],
-	// url: 'encounter',
-	// args: ['ink/encounter-astroid.json'],
-
 });
 
-// switch pages when it changes
+//
+// Handle Page "routes"
 effect(() => {
 	const {url, args} = currentPage.value;
 	switch(url) {
@@ -40,11 +31,6 @@ effect(() => {
 	}	
 });
 
-// Show the Title Screen.
-// pageTitleScreen('#gamearea');
-
-// Encounter Screen
-// 'ink/encounter-astroid.json'
 
 
 
