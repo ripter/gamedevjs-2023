@@ -1,16 +1,16 @@
-.page-encounter-screen {
+.page-encounter {
 	color: white;	
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 
-.page-encounter-screen h1 {
+.page-encounter h1 {
 	margin: 0 1em;
 	margin-top: 0.5em;
 }
 
-.page-encounter-screen .story-text {
+.page-encounter .story-text {
 	font-family: Raleway;
 	font-size: var(--size-large);	
 	margin: 1em;

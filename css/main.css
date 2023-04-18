@@ -8,8 +8,9 @@
 @import "choice-skill-check.css";
 @import "choice-time-cost.css";
 /* Page Styles */
-@import "page-title-screen.css";
-@import "page-encounter-screen.css";
+@import "page-title.css";
+@import "page-encounter.css";
+@import "page-dialog.css";
 
 body {
 	background-color: var(--color-background);

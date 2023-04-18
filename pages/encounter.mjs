@@ -11,11 +11,6 @@ const state = signal({});
 let inkStory;
 
 
-effect(() => {
-	console.log('state', state.value);
-});
-
-
 /**
  * Page for Encounters.
  * Encounters serve as the central gameplay mechanism, providing players with an engaging challenge that tests their abilities, strategies, and luck, and ultimately determines their success or failure in the game.
@@ -49,7 +44,7 @@ export async function pageEncounter(selector, storyURL) {
 	});
 	
 	const elm = document.querySelector(selector);
-	elm.className = 'page-encounter-screen';
+	elm.className = 'page-encounter';
 
 	// run the current story
 	runFlow();

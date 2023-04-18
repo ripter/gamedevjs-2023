@@ -1,20 +1,20 @@
-.page-title-screen {
+.page-title {
 	color: #DDD;
 	background-image: url("../imgs/ship-background.png");
 }
 
-.page-title-screen header {
+.page-title header {
 	text-align: center;
 	font-family: Raleway;
 }
-.page-title-screen header h3 {
+.page-title header h3 {
 	padding-left: 10em;
 }
-.page-title-screen header h3 a {
+.page-title header h3 a {
 	color: var(--color-foreground);
 }
 
-.page-title-screen footer {
+.page-title footer {
 	position: absolute;
 	bottom: 4em;
 	width: 100%;
@@ -22,7 +22,7 @@
 	justify-content: center;
 }
 
-.page-title-screen footer button {
+.page-title footer button {
 	font-size: 30px;	
 	box-shadow: #001f3f 3px 5px 8px;
 	cursor: pointer;
@@ -32,7 +32,7 @@
 	padding: 0.5em 1em;
 	font-family: ChivoMono;
 }
-.page-title-screen footer button:active {
+.page-title footer button:active {
 	background-color: #001f3f;
 	color: white;
 	box-shadow: var(--color-yellow) 3px 5px 8px;
