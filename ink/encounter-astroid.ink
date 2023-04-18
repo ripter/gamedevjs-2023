@@ -1,4 +1,7 @@
 EXTERNAL rollDice(skillName)
+EXTERNAL updateShip(propName, deltaValue)
+EXTERNAL updatePlayer(propName, deltaValue)
+EXTERNAL onGameOver()
 
 VAR time = -1
 VAR largeRocks = 0
@@ -155,6 +158,7 @@ You attempt to repair the damage.
 
 
 === end_result ===
+#title: Summary
 {largeRocks > 0:
     {largeRocks} Areas of the ship damaged by the Large Rocks.
 }
@@ -164,4 +168,7 @@ You attempt to repair the damage.
 {hasDebris:
     Minor damage across several areas from the debris.
 }
+
++ Return
+    ~ onGameOver()
 -> END

@@ -13,7 +13,7 @@ let inkStory;
 
 effect(() => {
 	console.log('state', state.value);
-})
+});
 
 
 /**
@@ -22,12 +22,30 @@ effect(() => {
 */
 export async function pageEncounter(selector, storyURL) {
 	inkStory = await loadStory(storyURL);
+	window.inkStory = inkStory; // for debugging
 	//
 	// rollDice function. Rolls dice and sets the "time" variable with the result.
 	inkStory.BindExternalFunction('rollDice', (skillName) => {
 		const skillLevel = window.player.skills[skillName];
 		const diceResults = rollDice(skillLevel);
 		inkStory.variablesState['time'] = diceResults.reduce((acc, value) => {return acc + value}, 0);
+	});
+	//
+	// Updates the Ship
+	inkStory.BindExternalFunction('updateShip', (propName, deltaValue) => {
+		console.log('Change Ship', propName, 'by', deltaValue);
+		return "Ok damage the {freakin|strange|large} ship."	
+	});
+	//
+	// Updates the Player
+	inkStory.BindExternalFunction('updatePlayer', (propName, deltaValue) => {
+		console.log('Change Player', propName, 'by', deltaValue);
+		return "Ok damage the {amazing|cool|awesome} player."	
+	});
+	//
+	// Called when the Encounter is over.
+	inkStory.BindExternalFunction('onGameOver', () => {
+		console.log('onGameOver');
 	});
 	
 	const elm = document.querySelector(selector);
@@ -41,7 +59,6 @@ export async function pageEncounter(selector, storyURL) {
 	effect(() => {
 		const { tagState, body, choiceList, turnsLeft } = state.value;
 		const { choiceType, background, title } = tagState;
-		console.log('tagState', tagState);
 		const Choice = getChoiceComponent(choiceType);
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
@@ -85,9 +102,6 @@ function runFlow() {
 	state.value = {
 		body: text.map(val => html`<p>${val}</p>`),
 		choiceList: inkStory.currentChoices,
-		// turnsLeft: inkStory.variablesState['turnsLeft'],
-		// isRolling: inkStory.variablesState['isRolling'],
-		// skill: inkStory.variablesState['skill'],
 		tagState: {
 			...state.value.tagState,
 			...tagState,

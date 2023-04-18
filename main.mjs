@@ -1,3 +1,4 @@
+import {app} from './libs/APath.js';
 // import { pageTitleScreen } from '../pages/titleScreen.mjs';
 import { pageEncounter } from '../pages/encounter.mjs';
 import { Player } from '../utils/Player.mjs';
@@ -15,3 +16,43 @@ window.ship = new Ship();
 
 // Encounter Screen
 pageEncounter('#gamearea', 'ink/encounter-astroid.json');
+
+console.log('app', app);
+app
+	.get('/test/?query=:query', function (ctx) {
+		console.log(ctx);
+		/*
+		{
+			"path": "/test/?query=value",
+			"params": {
+				"query": "value"
+			}
+		}
+		*/
+	})
+	.get('/test/:status', function (ctx) {
+		console.log(ctx);
+		/*
+		{
+			"path": "/test/OK",
+			"params": {
+				"status": "OK"
+			}
+		}
+		*/
+	});
+
+// intercept all unregistered calls
+app.get('*',
+	function (ctx, next) {
+		console.log(ctx);
+		/*
+		{
+			"path": "/whatever"
+		}
+		*/
+		next();
+	},
+	// will receive the ctx object too
+	console.error
+);
