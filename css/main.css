@@ -2,6 +2,7 @@
 @import "fonts.css";
 @import "colors.css";
 @import "sizes.css";
+@import "story.css";
 /* Component Styles */
 @import "choice.css";
 @import "choice-list.css";

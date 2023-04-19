@@ -1,5 +1,5 @@
 import { render, html } from '../libs/uhtml/index.mjs';
-import { signal, computed, effect } from '../libs/usignal.0.9.0.js';
+import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { Story } from '../utils/Story.mjs';
 import { rollDice } from '../utils/rollDice.mjs';

@@ -1,7 +1,7 @@
 -> start
 
 === start ===
-#background: childroom
+#background: childroom.png
 #npc: father
 
 Good morning sleepy head! Today is your graduation day!

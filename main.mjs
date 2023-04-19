@@ -16,10 +16,10 @@ window.ship = new Ship();
 
 // keep track of which page we should show.
 const currentPage = window.currentPage = signal({
-	url: 'intro',
-	args: [clickToEncounter('encounter-astroid')]
-	// url: 'dialog',
-	// args: [`ink/day1.json`],
+	// url: 'intro',
+	// args: [clickToEncounter('encounter-astroid')]
+	url: 'dialog',
+	args: [`ink/day1.json`],
 });
 
 //

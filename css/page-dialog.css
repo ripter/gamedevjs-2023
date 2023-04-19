@@ -1,3 +1,14 @@
 .page-dialog {
-	
+	background-size: contain;	
 }
+
+.page-dialog .npc {
+	height: 100%;
+	position: absolute;
+}
+
+/* .page-dialog .story-text {
+	color: var(--color-dialog-color);
+	background-color: var(--color-dialog-background);
+	position: relative;
+} */

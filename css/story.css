@@ -1,0 +1,8 @@
+.story-text {
+	font-family: Raleway;
+	font-size: var(--size-large);	
+	margin: 1em;
+	color: var(--color-dialog-color);
+	background-color: var(--color-dialog-background);
+	position: relative;
+}
