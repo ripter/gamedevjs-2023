@@ -1,9 +1,11 @@
 import { signal, computed, effect } from '../libs/usignal.0.9.0.js';
 
-import { clickToEncounter } from '../utils/clickToEncounter.mjs';
 import { pageTitleScreen } from '../pages/titleScreen.mjs';
 import { pageEncounter } from '../pages/encounter.mjs';
 import { pageDialog } from '../pages/dialog.mjs';
+import { pageShip } from '../pages/ship.mjs';
+
+import { clickToEncounter } from '../utils/clickToEncounter.mjs';
 import { Player } from '../utils/Player.mjs';
 import { Ship } from '../utils/Ship.mjs';
 
@@ -18,8 +20,10 @@ window.ship = new Ship();
 const currentPage = window.currentPage = signal({
 	// url: 'intro',
 	// args: [clickToEncounter('encounter-astroid')]
-	url: 'dialog',
-	args: [`ink/day1.json`],
+	// url: 'dialog',
+	// args: [`ink/day1.json`],
+	url: 'page',
+	args: [],
 });
 
 //
@@ -31,6 +35,8 @@ effect(() => {
 			return pageDialog('#gamearea', ...args)
 		case 'encounter': 
 			return pageEncounter('#gamearea', ...args);
+		case 'page':
+			return pageShip('#gamearea');
 		default:
 			return pageTitleScreen('#gamearea', ...args);
 	}	

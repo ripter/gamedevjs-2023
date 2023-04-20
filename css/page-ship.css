@@ -1,0 +1,24 @@
+.page-ship {
+	background-image: url('../imgs/ship/outside.png');	
+	background-size: contain;
+}
+
+.page-ship .mask {
+	background-image: url('../imgs/ship/medical.png');	
+	background-size: contain;
+	opacity: 0.5;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+.page-ship .mask {
+	
+}
+
+.page-ship .choice-list li:hover {
+	background-color: red;	
+	cursor: pointer;
+}
