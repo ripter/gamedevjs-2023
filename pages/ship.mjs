@@ -14,20 +14,46 @@ export async function pageShip(selector) {
 	elm.className = 'page-ship';
 	effect(() => {
 		render(elm, html`
-			<div class="mask"></div>
 			<div class='story-text'>
 				Pick a Ship Location to Visit:
 			</div>
 			<ul class='choice-list'>
-				<li>Central Hub</li>
-				<li>Health and Wellness District</li>
-				<li>Research Complex</li>
-				<li>Residential Districts</li>
-				<li>Commercial District</li>
-				<li>Industrial Zone</li>
-				<li>Agricultural Zone</li>
-				<li>Cultural and Arts District</li>
-				<li>Outer Decks</li>
+				<li class="choice">
+					<a>Central Hub</a>
+					<img class="mask" src="../imgs/ship/central.png" />
+				</li>
+				<li class="choice">
+					<a>Health and Wellness District</a>
+					<img class="mask" src="../imgs/ship/medical.png" />
+				</li>
+				<li class="choice">
+					<a>Research Complex</a>
+					<img class="mask" src="../imgs/ship/research.png" />
+				</li>
+				<li class="choice">
+					<a>Residential Districts</a>
+					<img class="mask" src="../imgs/ship/residential.png" />
+				</li>
+				<li class="choice">
+					<a>Commercial District</a>
+					<img class="mask" src="../imgs/ship/comercal.png" />
+				</li>
+				<li class="choice">
+					<a>Industrial Zone</a>
+					<img class="mask" src="../imgs/ship/industral.png" />
+				</li>
+				<li class="choice">
+					<a>Agricultural Zone</a>
+					<img class="mask" src="../imgs/ship/agricultural.png" />
+				</li>
+				<li class="choice">
+					<a>Cultural and Arts District</a>
+					<img class="mask" src="../imgs/ship/arts.png" />
+				</li>
+				<li class="choice">
+					<a>Outer Decks</a>
+					<img class="mask" src="../imgs/ship/outerdecks.png" />
+				</li>
 			</ul>
 		`);	
 	})	
