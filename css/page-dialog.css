@@ -7,8 +7,19 @@
 	position: absolute;
 }
 
-/* .page-dialog .story-text {
-	color: var(--color-dialog-color);
-	background-color: var(--color-dialog-background);
-	position: relative;
-} */
+.page-dialog .story-text {
+	position: absolute;
+	right: 0;
+	width: 70%;
+	padding: 1em;
+}
+
+.page-dialog .choice-list {
+	position: absolute;
+	bottom: 0;
+	width: 70%;
+	right: 0;
+	
+	display: flex;
+	flex-direction: column;
+}
