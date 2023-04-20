@@ -1,6 +1,23 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
+import { ChoiceHover } from '../components/ChoiceHover.mjs';
+
+const links = [
+	{text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png'},  
+	{text: 'Central Hub', img: '../imgs/ship/central.png'},  
+	{text: 'Commercial District', img: '../imgs/ship/comercal.png'},  
+	{text: 'Cultural and Arts District', img: '../imgs/ship/arts.png'},  
+	{text: 'Engine', img: '../imgs/ship/engine.png'},  
+	{text: 'Health and Wellness District', img: '../imgs/ship/medical.png'},  
+	{text: 'Industrial Zone', img: '../imgs/ship/industral.png'},  
+	{text: 'Outer Decks', img: '../imgs/ship/outerdecks.png'},  
+	{text: 'Research Complex', img: '../imgs/ship/research.png'},  
+	{text: 'Residential Districts', img: '../imgs/ship/residential.png'},	
+	{text: 'Ship Stats', img: null},
+	{text: 'Your Stats', img: null},
+];
+
 /**
  * Page Pick a ship location,
 */
@@ -8,53 +25,36 @@ export async function pageShip(selector) {
 	const elm = document.querySelector(selector);
 	const state = signal({});
 	
+	const handleClick = (item) => {
+		console.log('clicked', item);
+	}
+	const handleOver = (item) => {
+		console.log('over', item);
+		state.value = {
+			maskURL: item.img,
+		}	
+	}
+	const handleOut = (item) => {
+		console.log('out', item);	
+		state.value = {
+			maskURL: null,
+		}	
+	}
 	
 	//
 	// Render the page.
 	elm.className = 'page-ship';
 	effect(() => {
+		const { maskURL } = state.value;
 		render(elm, html`
-			<div class='story-text'>
-				Pick a Ship Location to Visit:
+			${maskURL && 
+				html`<img class="mask" src=${maskURL} />`
+			}
+			<div class="at-bottom">
+				<ul class='choice-list'>
+					${links.map(item => ChoiceHover(item, handleClick, handleOver, handleOut))}
+				</ul>	
 			</div>
-			<ul class='choice-list'>
-				<li class="choice">
-					<a>Central Hub</a>
-					<img class="mask" src="../imgs/ship/central.png" />
-				</li>
-				<li class="choice">
-					<a>Health and Wellness District</a>
-					<img class="mask" src="../imgs/ship/medical.png" />
-				</li>
-				<li class="choice">
-					<a>Research Complex</a>
-					<img class="mask" src="../imgs/ship/research.png" />
-				</li>
-				<li class="choice">
-					<a>Residential Districts</a>
-					<img class="mask" src="../imgs/ship/residential.png" />
-				</li>
-				<li class="choice">
-					<a>Commercial District</a>
-					<img class="mask" src="../imgs/ship/comercal.png" />
-				</li>
-				<li class="choice">
-					<a>Industrial Zone</a>
-					<img class="mask" src="../imgs/ship/industral.png" />
-				</li>
-				<li class="choice">
-					<a>Agricultural Zone</a>
-					<img class="mask" src="../imgs/ship/agricultural.png" />
-				</li>
-				<li class="choice">
-					<a>Cultural and Arts District</a>
-					<img class="mask" src="../imgs/ship/arts.png" />
-				</li>
-				<li class="choice">
-					<a>Outer Decks</a>
-					<img class="mask" src="../imgs/ship/outerdecks.png" />
-				</li>
-			</ul>
 		`);	
 	})	
 }

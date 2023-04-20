@@ -3,29 +3,25 @@
 	background-size: contain;
 }
 
-.page-ship .choice-list {
-	flex-direction: column;
+.page-ship .at-bottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 
 .page-ship .mask {
-	opacity: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
+	opacity: 0.5;
+	transition: opacity 0.5s ease;
 	width: 100%;
 	height: 100%;
-	transition: opacity 0.5s ease;
 }
 
-.page-ship .choice-list li {
-	cursor: pointer;
-	padding: 1em;
-	margin-bottom: 1em;
-	
+.page-ship .choice-list {
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	position: static;
 }
-.page-ship .choice-list li:hover {
-	/* background-color: white; */
-}
-.page-ship .choice-list li:hover .mask {
-	opacity: 0.5;
+.page-ship .choice-list .choice {
+	margin: 0.25em 0.25em;	
 }
