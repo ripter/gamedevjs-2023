@@ -29,13 +29,11 @@ export async function pageShip(selector) {
 		console.log('clicked', item);
 	}
 	const handleOver = (item) => {
-		console.log('over', item);
 		state.value = {
 			maskURL: item.img,
 		}	
 	}
 	const handleOut = (item) => {
-		console.log('out', item);	
 		state.value = {
 			maskURL: null,
 		}	
