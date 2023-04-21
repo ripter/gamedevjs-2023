@@ -2,12 +2,6 @@
 	background-image: url('../imgs/ship/outside.png');	
 }
 
-.page-ship .at-bottom {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-}
-
 .page-ship .mask {
 	opacity: 0.5;
 	transition: opacity 0.5s ease;

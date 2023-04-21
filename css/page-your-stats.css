@@ -18,7 +18,7 @@
 	opacity: 1;
 }
 
-.page-your-stats .choice {
+.page-your-stats .choice-list .choice {
 	margin-top: 1em;	
 }
 .page-your-stats .choice.--active {

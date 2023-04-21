@@ -4,19 +4,7 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 import { formatSkillValue } from '../utils/formatSkillValue.mjs';
 import { getSkillDescription } from '../utils/getSkillDescription.mjs';
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
-
-/*
-* Social: Essential for building relationships, resolving conflicts, and achieving favorable outcomes in both personal and professional situations. Crucial in Residential Districts and the Central Hub.
-* Critical Thinking: Crucial for making informed decisions and solving problems in the Central Hub, Research Complex, and Health and Wellness District.
-* Mechanical: Vital for excelling in professions involving robotics, engineering, and maintenance in the Industrial Zone.
-* Programming: Key to thriving in professions involving software development, artificial intelligence, and digital systems in the Research Complex.
-* Creativity: Important for artistic and innovative pursuits in the Cultural and Arts District, as well as contributing to the development of new technologies in the Research Complex and designing unique experiences in the Commercial District.
-* Healthcare: Necessary for managing physical and emotional health events and maintaining well-being in the Health and Wellness District.
-* Piloting: Essential for operating and navigating large and small spacecraft in various space-related activities and professions.
-* Agriculture: Important for working with hydroponic gardens, air and water production, and maintaining the nature reserves.
-* Economics: Vital for managing wealth, understanding market dynamics, and excelling in commercial and government-related professions in the Commercial District and Central Hub.
-* Resource Management: Crucial for optimizing the use of available resources, minimizing waste, and ensuring the sustainability of the Celestial's systems and environment, applicable in various districts such as the Industrial Zone, Nature Reserves, and Agricultural Zone.
-*/
+import { clickToGoBack } from '../utils/clickToGoBack.mjs';
 
 const playerChoices = [
 	{
@@ -71,17 +59,8 @@ export async function pageYourStats(selector, backUrl, background) {
 	
 	
 	const handleClick = (item) => {
-		console.log('clicked', item);
-		if (item.name === 'back') {
-			// Go back to the previous URL.	
-			window.currentPage.value = {
-				url: backUrl,
-				args: [],
-			};
-		} else {
-			// Update the Active/Selected Item.	
-			activeIdx.value = playerChoices.findIndex(choice => choice.name === item.name);
-		}
+		// Update the Active/Selected Item.	
+		activeIdx.value = playerChoices.findIndex(choice => choice.name === item.name);
 	}
 	
 	//
@@ -95,7 +74,7 @@ export async function pageYourStats(selector, backUrl, background) {
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
-			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: handleClick, className: 'btn-back'})}
+			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: clickToGoBack(backUrl), className: 'btn-back'})}
 			<ul class='choice-list'>
 				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
 			</ul>	

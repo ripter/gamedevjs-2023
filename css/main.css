@@ -3,6 +3,7 @@
 @import "colors.css";
 @import "sizes.css";
 @import "story.css";
+@import "utils.css";
 /* Component Styles */
 @import "choice.css";
 @import "choice-list.css";
@@ -16,6 +17,7 @@
 @import "page-dialog.css";
 @import "page-ship.css";
 @import "page-your-stats.css";
+@import "page-ship-stats.css";
 
 body {
 	background-color: var(--color-background);

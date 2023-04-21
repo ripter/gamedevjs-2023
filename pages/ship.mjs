@@ -3,6 +3,7 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { ChoiceHover } from '../components/ChoiceHover.mjs';
 import { clickToYourStats } from '../utils/clickToYourStats.mjs';
+import { clickToShipStats } from '../utils/clickToShipStats.mjs';
 
 const links = [
 	{text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png'},  
@@ -16,7 +17,7 @@ const links = [
 	{text: 'Research Complex', img: '../imgs/ship/research.png'},  
 	{text: 'Residential Districts', img: '../imgs/ship/residential.png'},	
 	{text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png')},
-	{text: 'Ship Stats', img: null},
+	{text: 'Ship Stats', img: null, nextPage: clickToShipStats()},
 ];
 
 /**

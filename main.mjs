@@ -5,6 +5,7 @@ import { pageEncounter } from '../pages/encounter.mjs';
 import { pageDialog } from '../pages/dialog.mjs';
 import { pageShip } from '../pages/ship.mjs';
 import { pageYourStats } from '../pages/yourStats.mjs';
+import { pageShipStats } from '../pages/shipStats.mjs';
 
 import { clickToEncounter } from '../utils/clickToEncounter.mjs';
 import { Player } from '../utils/Player.mjs';
@@ -40,6 +41,8 @@ effect(() => {
 			return pageShip('#gamearea');
 		case 'yourStats':
 			return pageYourStats('#gamearea', ...args);
+		case 'shipStats':
+			return pageShipStats('#gamearea', ...args);
 		default:
 			return pageTitleScreen('#gamearea', ...args);
 	}	

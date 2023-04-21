@@ -15,3 +15,9 @@
 	font-family: Raleway;
 	line-height: 120%;
 }
+
+
+.choice.--active {
+	background-color: white;
+	color: #111111BB;
+}
