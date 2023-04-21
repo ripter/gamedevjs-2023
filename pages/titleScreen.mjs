@@ -5,7 +5,7 @@ import { render, html } from '../libs/uhtml/index.mjs';
 */
 export function pageTitleScreen(selector, onClick) {
 	const elm = document.querySelector(selector);
-	elm.className = 'page-title';
+	elm.className = 'page page-title';
 	
 	render(elm, html`
 		<header>

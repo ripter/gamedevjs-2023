@@ -22,10 +22,9 @@ export async function pageDialog(selector, storyURL) {
 	
 	//
 	// Render the page.
-	elm.className = 'page-dialog';
+	elm.className = 'page page-dialog';
 	effect(() => {
 		const { body, choiceList, tags } = state.value;
-		console.log('tags', tags);
 		const { background, npc } = tags;
 		const Choice = getChoiceComponent('basic');
 		

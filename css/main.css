@@ -10,6 +10,7 @@
 @import "choice-time-cost.css";
 @import "circle-list.css";
 /* Page Styles */
+@import "page.css";
 @import "page-title.css";
 @import "page-encounter.css";
 @import "page-dialog.css";

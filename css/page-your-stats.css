@@ -7,11 +7,32 @@
 .page-your-stats .hero {
 	height: 100%;	
 	width: 50%;
+	background-color: white;
+	opacity: 0.75;
+	font-family: ChivoMono;
+}
+.page-your-stats .hero * {
+	padding: 0.5em;
+}
+.page-your-stats .hero p {
+	opacity: 1;
 }
 
 .page-your-stats .choice {
 	margin-top: 1em;	
 }
+.page-your-stats .choice.--active {
+	background-color: white;
+	color: #111111BB;
+}
 .page-your-stats .choice-list {
 	flex-direction: column;	
+}
+
+
+.page-your-stats .btn-back {
+	list-style: none;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

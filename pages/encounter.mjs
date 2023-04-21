@@ -42,7 +42,7 @@ export async function pageEncounter(selector, storyURL) {
 	
 	//
 	// Render the page.
-	elm.className = 'page-encounter';
+	elm.className = 'page page-encounter';
 	effect(() => {
 		const { tags, body, choiceList, turnsLeft } = state.value;
 		const { choiceType, background, title } = tags;

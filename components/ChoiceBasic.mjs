@@ -5,10 +5,11 @@ import { html } from '../libs/uhtml/index.mjs';
  * @params {ChoiceItem} choiceItem
  * @params {(ChoiceItem) => void} onClick
 */
-export function ChoiceBasic(choiceItem, onClick) {
-	const { text } = choiceItem;
+export function ChoiceBasic(props) {
+	const { item, onClick, className = '' } = props;
+	const { text } = item;
 	
-	return html.for(choiceItem)`<li class="choice" @click=${() => onClick(choiceItem)}>
+	return html.for(item)`<li class=${`choice ${className}`} @click=${() => onClick(item)}>
 		<span class="text">${text}</span>
 	</li>`;	
 }

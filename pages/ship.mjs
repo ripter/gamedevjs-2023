@@ -15,7 +15,7 @@ const links = [
 	{text: 'Outer Decks', img: '../imgs/ship/outerdecks.png'},  
 	{text: 'Research Complex', img: '../imgs/ship/research.png'},  
 	{text: 'Residential Districts', img: '../imgs/ship/residential.png'},	
-	{text: 'Your Stats', img: null, nextPage: clickToYourStats()},
+	{text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png')},
 	{text: 'Ship Stats', img: null},
 ];
 
@@ -45,7 +45,7 @@ export async function pageShip(selector) {
 	
 	//
 	// Render the page.
-	elm.className = 'page-ship';
+	elm.className = 'page page-ship';
 	effect(() => {
 		const { maskURL } = state.value;
 		render(elm, html`
