@@ -19,7 +19,7 @@
 .page-ship .choice-list {
 	flex-direction: row;
 	flex-wrap: wrap;
-	justify-content: flex-start;
+	justify-content: space-between;
 	position: static;
 }
 .page-ship .choice-list .choice {

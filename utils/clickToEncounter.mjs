@@ -1,4 +1,7 @@
 
+
+
+
 /**
  * Returns a Click Handler at navigates to an Encounter Page.
 */

@@ -8,11 +8,13 @@
 @import "choice-list.css";
 @import "choice-skill-check.css";
 @import "choice-time-cost.css";
+@import "circle-list.css";
 /* Page Styles */
 @import "page-title.css";
 @import "page-encounter.css";
 @import "page-dialog.css";
 @import "page-ship.css";
+@import "page-your-stats.css";
 
 body {
 	background-color: var(--color-background);

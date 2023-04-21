@@ -2,6 +2,7 @@ import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { ChoiceHover } from '../components/ChoiceHover.mjs';
+import { clickToYourStats } from '../utils/clickToYourStats.mjs';
 
 const links = [
 	{text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png'},  
@@ -14,8 +15,8 @@ const links = [
 	{text: 'Outer Decks', img: '../imgs/ship/outerdecks.png'},  
 	{text: 'Research Complex', img: '../imgs/ship/research.png'},  
 	{text: 'Residential Districts', img: '../imgs/ship/residential.png'},	
+	{text: 'Your Stats', img: null, nextPage: clickToYourStats()},
 	{text: 'Ship Stats', img: null},
-	{text: 'Your Stats', img: null},
 ];
 
 /**
@@ -27,6 +28,9 @@ export async function pageShip(selector) {
 	
 	const handleClick = (item) => {
 		console.log('clicked', item);
+		if (item.nextPage) {
+			item.nextPage();
+		}
 	}
 	const handleOver = (item) => {
 		state.value = {

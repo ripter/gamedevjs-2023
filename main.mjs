@@ -4,6 +4,7 @@ import { pageTitleScreen } from '../pages/titleScreen.mjs';
 import { pageEncounter } from '../pages/encounter.mjs';
 import { pageDialog } from '../pages/dialog.mjs';
 import { pageShip } from '../pages/ship.mjs';
+import { pageYourStats } from '../pages/yourStats.mjs';
 
 import { clickToEncounter } from '../utils/clickToEncounter.mjs';
 import { Player } from '../utils/Player.mjs';
@@ -32,11 +33,13 @@ effect(() => {
 	const {url, args} = currentPage.value;
 	switch(url) {
 		case 'dialog':
-			return pageDialog('#gamearea', ...args)
+			return pageDialog('#gamearea', ...args);
 		case 'encounter': 
 			return pageEncounter('#gamearea', ...args);
 		case 'page':
 			return pageShip('#gamearea');
+		case 'yourStats':
+			return pageYourStats('#gamearea', ...args);
 		default:
 			return pageTitleScreen('#gamearea', ...args);
 	}	
