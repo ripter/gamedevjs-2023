@@ -95,7 +95,7 @@ export async function pageYourStats(selector, backUrl, background) {
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
-			${ChoiceBasic({item: {text: 'back', name: 'back'}, onClick: handleClick, className: 'btn-back'})}
+			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: handleClick, className: 'btn-back'})}
 			<ul class='choice-list'>
 				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
 			</ul>	
