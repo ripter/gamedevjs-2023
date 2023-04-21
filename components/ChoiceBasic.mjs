@@ -3,12 +3,12 @@ import { html } from '../libs/uhtml/index.mjs';
 /**
  * Basic Choice Component.
  * @params {ChoiceItem} choiceItem
- * @params {(number) => void} onClick
+ * @params {(ChoiceItem) => void} onClick
 */
 export function ChoiceBasic(choiceItem, onClick) {
-	const { text, index } = choiceItem;
+	const { text } = choiceItem;
 	
-	return html.for(choiceItem)`<li class="choice" @click=${() => onClick(index)}>
+	return html.for(choiceItem)`<li class="choice" @click=${() => onClick(choiceItem)}>
 		<span class="text">${text}</span>
 	</li>`;	
 }

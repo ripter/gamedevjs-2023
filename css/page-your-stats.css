@@ -1,3 +1,17 @@
 .page-your-stats {
-	
+	display: flex;
+	align-items: flex-end;	
+	justify-content: space-between;
+}
+
+.page-your-stats .hero {
+	height: 100%;	
+	width: 50%;
+}
+
+.page-your-stats .choice {
+	margin-top: 1em;	
+}
+.page-your-stats .choice-list {
+	flex-direction: column;	
 }

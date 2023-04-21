@@ -20,7 +20,7 @@ import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
 const playerChoices = [
 	{
 		name: "Social",
-		description: "Essential for building relationships, resolving conflicts, and achieving favorable outcomes in both personal and professional situations.",
+		description: "The Social skill encompasses the ability to communicate effectively, establish and maintain positive relationships, and navigate social dynamics with ease. Those who possess strong Social skills excel at building rapport, resolving conflicts, and achieving positive outcomes in both personal and professional settings.",
 	},
 	{
 		name: "Intelligence",
@@ -71,6 +71,7 @@ export async function pageYourStats(selector) {
 	
 	const handleClick = (item) => {
 		console.log('clicked', item);
+		activeIdx.value = playerChoices.findIndex(choice => choice.name === item.name);
 	}
 	const handleOver = (item) => {
 		// state.value = {
@@ -87,22 +88,25 @@ export async function pageYourStats(selector) {
 	// Render the page.
 	elm.className = 'page-your-stats';
 	effect(() => {
-		console.log('activeIdx', activeIdx.value);
 		const choices = loadPlayerStats(playerChoices);
 		const leftChoiceList = choices.slice(0, 5);
 		const rightChoiceList = choices.slice(5);
-		console.log('choices', choices);
+		const activeItem = choices[activeIdx.value];
+		
 		render(elm, html`
-			<h1>Your Stats</h1>
 			<ul class='choice-list'>
 				${leftChoiceList.map(item => ChoiceBasic(item, handleClick))}
-				${choices.map((item, idx) => html.for(item)`<li 
-					class=${'choice' + (idx === activeIdx.value ? ' active' : '')}
-					@click=${() => {activeIdx.value = idx;}}
-					>
-					<span class='text'>${item.term}</span>
-				</li>`)}
 			</ul>	
+			<div class="hero">
+				<h2>${activeItem.text}</h2>	
+				<p>
+					${activeItem.description}
+				</p>
+			</div>
+			<ul class='choice-list'>
+				${rightChoiceList.map(item => ChoiceBasic(item, handleClick))}
+			</ul>	
+
 		`);	
 	})	
 }
