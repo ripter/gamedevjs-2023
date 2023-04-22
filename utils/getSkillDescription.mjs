@@ -1,11 +1,7 @@
 /**
  * Returns a short description for the skill based on the Player's current level.
  */
-export function getSkillDescription(skillName) {
-	const { skills } = window.player;
-	const skill = skillName.toLowerCase();
-	const value = skills[skill];
-
+export function getSkillDescription(value) {
 	switch (value) {
 		case 1:
 			return "Novice";

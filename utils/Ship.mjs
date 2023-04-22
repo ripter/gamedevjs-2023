@@ -20,26 +20,13 @@ export class Ship {
 		this.criticalSystems.forEach(name => {
 			this[name] = {
 				value: 100,
-				events: [],
+				events: ['maintenance-perfect'],
 			};
 		});
-		
-		// // Events are things that has happend to the  over the course of the game
-		this.lifeSupport.events = [
-			'maintenance-perfect',
-		];
-		this.power.events = [
-			'born',
-		]
 	}
 
 	getSystemValue(system) {
 		const value = this[system].value;
 		return `${value}%`;
 	}
-
-	getSystemLabel(system) {
-		return formatPropName(system);	
-	}
-	
 }

@@ -21,7 +21,6 @@ export async function pageShipStats(selector, backUrl) {
 		const { ship } = window;
 		const activeItem = allChoices[activeIdx.value];
 		const events = ship[activeItem.system].events.map(getAchievement);
-		console.log('events', events);
 		
 		const handleClick = (item) => {
 			// Update the Active/Selected Item.	

@@ -10,22 +10,31 @@ export class Player {
 		this.health = 100;
 		// All Skills Start at 1
 		// Skills are the user's dice pool used in encounters.
-		this.skills = {
-			social: 1,
-			intelligence: 2,
-			mechanical: 3,
-			programming: 4,
-			creativity: 5,
-			healthcare: 6,
-			piloting: 7,
-			agriculture: 8,
-			economics: 9,	
-			management: 10,	
-		}
+		this.skills = [
+			'social',
+			'intelligence',
+			'mechanical',
+			'programming',
+			'creativity',
+			'healthcare',
+			'piloting',
+			'agriculture',
+			'economics',	
+			'management',	
+		];
+
+		this.skills.forEach(skill => {
+			this[skill] = {
+				value: 1,
+				events: [],
+			}
+		});
 
 		// Events are things that has happend to the Player over the course of the game
-		this.events = [
+		this.healthcare.events = [
 			'born',
+		];
+		this.piloting.events = [
 			'astroid-perfect',
 		];
 	}
@@ -35,8 +44,8 @@ export class Player {
 	 * @param {string} skillName 
 	 * @returns {string} "n/10"
 	 */
-	getSkillString(skillName) {
-		 const value = this.skills[skillName];
+	getSkillValue(skillName) {
+		 const { value = 0 } = this[skillName];
 		 return `${value}/10`;
 	}
 }
