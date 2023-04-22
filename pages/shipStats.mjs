@@ -27,7 +27,7 @@ export async function pageShipStats(selector, backUrl) {
 		elm.style.backgroundImage = `url(./imgs/ship/${activeItem.background})`;
 		render(elm, html`
 			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: clickToGoBack(backUrl), className: 'btn-back'})}
-			<dl>
+			<dl class="paper">
 				<dt>${activeItem.text}</dt>
 				<dd>${activeItem.description}</dd>
 

@@ -4,29 +4,27 @@
 	justify-content: space-between;
 }
 
+/* Hero Element */
 .page-your-stats .hero {
+	background-color: var(--color-white-1a);
+	box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 	height: 100%;	
+	margin: 0;
+	/* opacity: 0.75; */
+	overflow: scroll;
 	width: 50%;
-	background-color: white;
-	opacity: 0.75;
-	font-family: ChivoMono;
-}
-.page-your-stats .hero * {
-	padding: 0.5em;
-}
-.page-your-stats .hero p {
-	opacity: 1;
 }
 
-.page-your-stats .choice-list .choice {
-	margin-top: 1em;	
+.page-your-stats .hero dd {
+	margin: 0;
+	background-color: unset;
 }
-.page-your-stats .choice.--active {
-	background-color: white;
-	color: #111111BB;
-}
+
 .page-your-stats .choice-list {
 	flex-direction: column;	
+}
+.page-your-stats .choice-list .choice {
+	margin-top: 1em;	
 }
 
 

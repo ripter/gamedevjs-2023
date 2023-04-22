@@ -2,7 +2,6 @@
 .choice-skill-check .challenge {
 	margin: 0;
 	text-align: right;
-	font-family: ChivoMono;
 	margin-top: 1em;
 	font-size: var(--size-detail);
 }

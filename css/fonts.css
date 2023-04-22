@@ -7,3 +7,8 @@
 	font-family: Raleway;
 	src: url("../fonts/Raleway/Raleway-VariableFont_wght.ttf");
 }
+
+* {
+	--choice-font-family: Raleway;
+	--body-font-family: ChivoMono;
+}

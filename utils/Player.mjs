@@ -23,4 +23,14 @@ export class Player {
 			management: 1,	
 		}
 	}
+
+	/**
+	 * returns a string that represents the current level of proficiency for
+	 * @param {string} skillName 
+	 * @returns {string} "n/10"
+	 */
+	getSkillString(skillName) {
+		 const value = this.skills[skillName];
+		 return `${value}/10`;
+	}
 }

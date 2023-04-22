@@ -2,9 +2,10 @@
 	border: thin solid white;	
 	cursor: pointer;
 	color: white;
-	background-color: #111111BB;
+	background-color: var(--color-black-1a);
 	padding: 0.5em;
 	box-shadow: #ddd 3px 5px 8px;
+	font-family: var(--choice-font-family);
 }
 .choice:hover {
 	box-shadow: var(--color-yellow) 3px 5px 8px;
@@ -12,12 +13,11 @@
 
 .choice .text {
 	font-weight: bold;
-	font-family: Raleway;
 	line-height: 120%;
 }
 
 
 .choice.--active {
 	background-color: white;
-	color: #111111BB;
+	color: var(--color-black-1a);
 }

@@ -1,12 +1,11 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
-import { formatSkillValue } from '../utils/formatSkillValue.mjs';
-import { getSkillDescription } from '../utils/getSkillDescription.mjs';
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
 import { clickToGoBack } from '../utils/clickToGoBack.mjs';
+import { getSkillDescription } from '../utils/getSkillDescription.mjs';
 
-const playerChoices = [
+const allChoices = [
 	{
 		name: "Social",
 		description: "The Social skill encompasses the ability to communicate effectively, establish and maintain positive relationships, and navigate social dynamics with ease. Those who possess strong Social skills excel at building rapport, resolving conflicts, and achieving positive outcomes in both personal and professional settings.",
@@ -58,19 +57,25 @@ export async function pageYourStats(selector, backUrl, background) {
 	const activeIdx = signal(0);
 	
 	
+	// Set Clicked button's item as the active choice.
 	const handleClick = (item) => {
-		// Update the Active/Selected Item.	
-		activeIdx.value = playerChoices.findIndex(choice => choice.name === item.name);
+		activeIdx.value = allChoices.findIndex(choice => choice.name === item.name);
 	}
 	
 	//
 	// Render the page.
 	elm.className = 'page page-your-stats';
 	effect(() => {
-		const choices = loadPlayerStats(playerChoices);
+		const { player } = window;
+		const choices = allChoices.map(choice => ({
+			...choice,
+			text: `${choice.name} (${player.getSkillString(choice.name.toLowerCase())})`,
+		}));
 		const leftChoiceList = choices.slice(0, 5);
 		const rightChoiceList = choices.slice(5);
 		const activeItem = choices[activeIdx.value];
+		const playerSkill = player.getSkillString(activeItem.name.toLowerCase());
+		const skillAdj = getSkillDescription(activeItem.name);
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
@@ -78,13 +83,12 @@ export async function pageYourStats(selector, backUrl, background) {
 			<ul class='choice-list'>
 				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
 			</ul>	
-			<div class="hero">
-				<h2>${activeItem.name}</h2>	
-				<h3>${`${formatSkillValue(activeItem.name)} - ${getSkillDescription(activeItem.name)}`}</h3>
-				<p>
+			<dl class="hero paper">
+				<dt>${`${activeItem.name}  ${playerSkill}  ${skillAdj}`}</dt>
+				<dd>
 					${activeItem.description}
-				</p>
-			</div>
+				</dd>
+			</dl>
 			<ul class='choice-list'>
 				${rightChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
 			</ul>	
@@ -92,17 +96,3 @@ export async function pageYourStats(selector, backUrl, background) {
 		`);	
 	})	
 }
-
-
-/**
- * Loads the players's real stats into the choice list.
-*/
-function loadPlayerStats(choiceList) {
-	const { skills } = window.player;
-	return choiceList.map(choice => ({
-		...choice,
-		text: `${choice.name} (${formatSkillValue(choice.name)})`,
-	}));	
-}
-
-
