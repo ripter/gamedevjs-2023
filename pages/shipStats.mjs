@@ -2,6 +2,7 @@ import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { clickToGoBack } from '../utils/clickToGoBack.mjs';
+import { getAchievement } from '../const/achievements.mjs';
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
 
 /**
@@ -17,7 +18,10 @@ export async function pageShipStats(selector, backUrl) {
 	// Render the page.
 	elm.className = 'page page-ship-stats';
 	effect(() => {
+		const { ship } = window;
 		const activeItem = allChoices[activeIdx.value];
+		const events = ship[activeItem.system].events.map(getAchievement);
+		console.log('events', events);
 		
 		const handleClick = (item) => {
 			// Update the Active/Selected Item.	
@@ -30,9 +34,8 @@ export async function pageShipStats(selector, backUrl) {
 			<dl class="paper">
 				<dt>${activeItem.text}</dt>
 				<dd>${activeItem.description}</dd>
-
-				<dt>Health: ${window.ship.getSystemString(activeItem.system)}</dt>
-				<dd>Things effecting the system</dd>
+				<dt>Health: ${ship.getSystemValue(activeItem.system)}</dt>
+				${events.map(event => html.for(event)`<dd>${event.text}</dd>`)}
 			</dl>
 			<ul class='choice-list'>
 				${allChoices.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.text === activeItem.text ? '--active' : ''}`}))}

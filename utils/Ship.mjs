@@ -1,3 +1,5 @@
+import { formatPropName } from './formatPropName.mjs';
+
 /**
  * Holds data for the Ship
 */
@@ -16,15 +18,28 @@ export class Ship {
 		];	
 		// Health as percentage.
 		this.criticalSystems.forEach(name => {
-			this[name] = 100;
+			this[name] = {
+				value: 100,
+				events: [],
+			};
 		});
 		
+		// // Events are things that has happend to the  over the course of the game
+		this.lifeSupport.events = [
+			'maintenance-perfect',
+		];
+		this.power.events = [
+			'born',
+		]
 	}
 
-	getSystemString(system) {
-		const value = this[system];
-		console.log('system', value, system, this);
+	getSystemValue(system) {
+		const value = this[system].value;
 		return `${value}%`;
+	}
+
+	getSystemLabel(system) {
+		return formatPropName(system);	
 	}
 	
 }

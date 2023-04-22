@@ -4,6 +4,7 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
 import { clickToGoBack } from '../utils/clickToGoBack.mjs';
 import { getSkillDescription } from '../utils/getSkillDescription.mjs';
+import { getAchievement } from '../const/achievements.mjs';
 
 const allChoices = [
 	{
@@ -76,6 +77,7 @@ export async function pageYourStats(selector, backUrl, background) {
 		const activeItem = choices[activeIdx.value];
 		const playerSkill = player.getSkillString(activeItem.name.toLowerCase());
 		const skillAdj = getSkillDescription(activeItem.name);
+		const events = player.events.map(getAchievement);
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
@@ -85,9 +87,10 @@ export async function pageYourStats(selector, backUrl, background) {
 			</ul>	
 			<dl class="hero paper">
 				<dt>${`${activeItem.name}  ${playerSkill}  ${skillAdj}`}</dt>
-				<dd>
-					${activeItem.description}
-				</dd>
+				<dd>${activeItem.description}</dd>
+
+				${events.length >= 0 && html`<dt>Achievements</dt>`}
+				${events.map(event => html.for(event)`<dd>${event.text}</dd>`)}
 			</dl>
 			<ul class='choice-list'>
 				${rightChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}

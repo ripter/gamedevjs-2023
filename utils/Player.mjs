@@ -12,16 +12,22 @@ export class Player {
 		// Skills are the user's dice pool used in encounters.
 		this.skills = {
 			social: 1,
-			intelligence: 1,
-			mechanical: 1,
-			programming: 1,
-			creativity: 1,
-			healthcare: 1,
-			piloting: 1,
-			agriculture: 1,
-			economics: 1,	
-			management: 1,	
+			intelligence: 2,
+			mechanical: 3,
+			programming: 4,
+			creativity: 5,
+			healthcare: 6,
+			piloting: 7,
+			agriculture: 8,
+			economics: 9,	
+			management: 10,	
 		}
+
+		// Events are things that has happend to the Player over the course of the game
+		this.events = [
+			'born',
+			'astroid-perfect',
+		];
 	}
 
 	/**
