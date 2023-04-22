@@ -34,9 +34,6 @@ export class Player {
 		this.healthcare.events = [
 			'born',
 		];
-		this.piloting.events = [
-			'astroid-perfect',
-		];
 	}
 
 	/**
