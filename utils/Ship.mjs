@@ -20,5 +20,11 @@ export class Ship {
 		});
 		
 	}
+
+	getSystemString(system) {
+		const value = this[system];
+		console.log('system', value, system, this);
+		return `${value}%`;
+	}
 	
 }
