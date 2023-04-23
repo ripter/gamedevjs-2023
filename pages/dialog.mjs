@@ -16,11 +16,9 @@ export async function pageDialog(elm, storyURL) {
 	// Load the story
 	const story = await Story.load(storyURL, {
 		'triggerEvent': (code) => {
-			console.log('code', code);
 			triggerAchievement(code);
 		},
 		'nextPage': (url, arg) => {
-			console.log('next page', url, arg);
 			dispose();
 			window.currentPage.value = {
 				url,

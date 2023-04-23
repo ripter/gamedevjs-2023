@@ -6,16 +6,16 @@ import { clickToYourStats } from '../utils/clickToYourStats.mjs';
 import { clickToShipStats } from '../utils/clickToShipStats.mjs';
 
 const links = [
-	{text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png'},  
-	{text: 'Central Hub', img: '../imgs/ship/central.png'},  
-	{text: 'Commercial District', img: '../imgs/ship/comercal.png'},  
-	{text: 'Cultural and Arts District', img: '../imgs/ship/arts.png'},  
-	{text: 'Engine', img: '../imgs/ship/engine.png'},  
-	{text: 'Health and Wellness District', img: '../imgs/ship/medical.png'},  
-	{text: 'Industrial Zone', img: '../imgs/ship/industral.png'},  
-	{text: 'Outer Decks', img: '../imgs/ship/outerdecks.png'},  
-	{text: 'Research Complex', img: '../imgs/ship/research.png'},  
-	{text: 'Residential Districts', img: '../imgs/ship/residential.png'},	
+	{text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png', zone: 'agricultural'},  
+	{text: 'Central Hub', img: '../imgs/ship/central.png', zone: 'central'},  
+	{text: 'Commercial District', img: '../imgs/ship/comercal.png', zone: 'commercial'},  
+	{text: 'Cultural and Arts District', img: '../imgs/ship/arts.png', zone: 'culture'},  
+	{text: 'Engine', img: '../imgs/ship/engine.png', zone: 'engine'},  
+	{text: 'Health and Wellness District', img: '../imgs/ship/medical.png', zone: 'medical'},  
+	{text: 'Industrial Zone', img: '../imgs/ship/industral.png', zone: 'industrial'},  
+	{text: 'Outer Decks', img: '../imgs/ship/outerdecks.png', zone: 'decks'},  
+	{text: 'Research Complex', img: '../imgs/ship/research.png', zone: 'research'},  
+	{text: 'Residential Districts', img: '../imgs/ship/residential.png', zone: 'residential'},	
 	{text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png')},
 	{text: 'Ship Stats', img: null, nextPage: clickToShipStats()},
 ];
@@ -27,6 +27,7 @@ export async function pageShip(elm, nextInk) {
 	const state = signal({});
 	let dispose;
 	
+	console.log('nextInk', nextInk);
 	// Goto the next page.
 	const handleClick = (item) => {
 		if (item.nextPage) {
@@ -34,7 +35,7 @@ export async function pageShip(elm, nextInk) {
 		}
 		window.currentPage.value = {
 			url: 'dialog',
-			args: [`ink/${nextInk}.json`],
+			args: [`ink/${nextInk}-${item.zone}.json`],
 		};
 	};
 	// Add the mask on over
@@ -58,7 +59,6 @@ export async function pageShip(elm, nextInk) {
 	console.log('render ship on elm', elm);
 	dispose = effect(() => {
 		const { maskURL } = state.value;
-		console.log('re-render pageShip');
 
 		render(elm, html`
 			${maskURL && 
