@@ -5,14 +5,15 @@ import { html } from '../libs/uhtml/index.mjs';
  * @params {ChoiceItem} choiceItem
  * @params {(ChoiceItem) => void} onClick
 */
-export function ChoiceHover(choiceItem, onClick, onOver, onOut) {
-	const { text } = choiceItem;
+export function ChoiceHover(props) {
+	const { item, onClick, onOver, onOut, className = '' } = props;
+	const { text } = item;
 	
-	return html.for(choiceItem)`<li 
-		class="choice choice-image-mask" 
-		@click=${() => onClick(choiceItem)} 
-		@mouseover=${() => onOver(choiceItem)} 
-		@mouseout=${() => onOut(choiceItem)}
+	return html.for(item)`<li 
+		class=${`choice choice-image-mask ${className}`} 
+		@click=${() => onClick(item)} 
+		@mouseover=${() => onOver(item)} 
+		@mouseout=${() => onOut(item)}
 		>
 		<span class="text">${text}</span>
 	</li>`;	

@@ -2,11 +2,15 @@
 /**
  * Goes back a page.
  */
-export function clickToGoBack(backUrl, backArgs = []) {
+export function clickToGoBack() {
+	const currentPage = window.currentPage.value;
+	console.log('clickToGoBack', currentPage);
 	return () => {
 		window.currentPage.value = {
-			url: backUrl,
-			args: [...backArgs],
+			url: currentPage.lastUrl,
+			args: [...currentPage.lastArgs],
+			lastUrl: null,
+			lastArgs: null,
 		};
 	};
 }

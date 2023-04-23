@@ -28,6 +28,19 @@ export class Ship {
 			value: 1_000_500,
 			envents: new Set(),
 		};
+		// Zones are locations on the ship.
+		this.zones = [
+			{ text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png', zone: 'agricultural' },
+			{ text: 'Central Hub', img: '../imgs/ship/central.png', zone: 'central' },
+			{ text: 'Commercial District', img: '../imgs/ship/comercal.png', zone: 'commercial' },
+			{ text: 'Cultural and Arts District', img: '../imgs/ship/arts.png', zone: 'culture' },
+			{ text: 'Engine', img: '../imgs/ship/engine.png', zone: 'engine' },
+			{ text: 'Health and Wellness District', img: '../imgs/ship/medical.png', zone: 'medical' },
+			{ text: 'Industrial Zone', img: '../imgs/ship/industral.png', zone: 'industrial' },
+			{ text: 'Outer Decks', img: '../imgs/ship/outerdecks.png', zone: 'decks' },
+			{ text: 'Research Complex', img: '../imgs/ship/research.png', zone: 'research' },
+			{ text: 'Residential Districts', img: '../imgs/ship/residential.png', zone: 'residential' },
+		];
 	}
 
 	getSystemValue(system) {

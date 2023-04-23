@@ -19,6 +19,7 @@ export async function pageDialog(elm, storyURL) {
 			triggerAchievement(code);
 		},
 		'nextPage': (url, arg) => {
+			console.log(`Dialog moving to next page "${url}`);
 			dispose();
 			window.currentPage.value = {
 				url,
@@ -39,7 +40,11 @@ export async function pageDialog(elm, storyURL) {
 		const { background, npc } = tags;
 		const Choice = getChoiceComponent('basic');
 
-		elm.style.backgroundImage = `url(./imgs/${background})`;
+		console.log('render dialog');
+
+		if (background) {
+			elm.style.backgroundImage = `url(./imgs/${background})`;
+		}
 		render(elm, html.for({storyURL})`
 			<img class='npc' src=${`./imgs/npcs/${npc}.png`} />
 			<div class="position-relative story-text">

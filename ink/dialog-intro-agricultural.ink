@@ -45,8 +45,10 @@ Riley: "Anyway, let me show you around. The Agricultural Zone is not only respon
 
 As you follow Riley, you feel a sense of camaraderie and purpose. With an old friend by your side, you're eager to contribute to the well-being of the Celestial and its inhabitants.
 
-    ~ triggerEvent("meet-riley")
-    -> END
+    * [Explore another area.]
+        ~ triggerEvent("meet-riley")
+        ~ nextPage("ship", "dialog-intro")
+        -> END
     
 
 
@@ -71,8 +73,10 @@ Morgan: "Alright then, let's see what you've got. I'll be keeping an eye on you,
 
 As Morgan walks away, you feel a mix of excitement and determination. While your past rivalry may linger, you're committed to proving yourself and making a positive impact in the Agricultural Zone and on the Celestial as a whole.
 
- ~ triggerEvent("meet-morgan")
--> END
+    * [Learn about a different part of the Ship.]
+        ~ triggerEvent("meet-morgan")
+        ~ nextPage("ship", "dialog-intro")
+        -> END
 
 
 
@@ -99,5 +103,7 @@ Riley: "Once you've finished up here, come find me, and we can catch up. It's gr
 
 As Riley walks away, you feel motivated by their playful encouragement. Your diligence and enthusiasm are bound to make a positive impact on the Agricultural Zone and the Celestial as a whole.
 
-    ~ triggerEvent("meet-riley-flirty")
--> END
+    * [Look for more friends around the ship.]
+        ~ triggerEvent("meet-riley-flirty")
+        ~ nextPage("ship", "dialog-intro")
+        -> END
