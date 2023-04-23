@@ -1,4 +1,5 @@
 import { deltaRandomSkill } from '../actions/deltaRandomSkill.mjs';
+import { logEvent } from '../actions/logEvent.mjs';
 
 export const ACHIEVEMENTS = [
 	{ code: 'born', text: 'You where born! +1 all skills.' },
@@ -7,6 +8,9 @@ export const ACHIEVEMENTS = [
 	{ code: 'mom', text: 'You thanked Mom on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
 	{ code: 'dad', text: 'You thanked Dad on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
 	{ code: 'thank-no-one', text: 'You gave no thanks on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
+	{ code: 'meet-riley', text: 'You meet Riley', action: (eventMsg) => logEvent(eventMsg, window.player, 'social')},
+	{ code: 'meet-morgan', text: 'You meet Morgan', action: (eventMsg) => logEvent(eventMsg, window.player, 'social')},
+	{ code: 'meet-riley-flirty', text: 'You meet Riley', action: (eventMsg) => logEvent(eventMsg, window.player, 'mechanical')},
 ];
 
 /**
