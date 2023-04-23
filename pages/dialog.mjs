@@ -39,8 +39,6 @@ export async function pageDialog(elm, storyURL) {
 		const { background, npc } = tags;
 		const Choice = getChoiceComponent('basic');
 
-		console.log('re-render pageDialog');
-		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html.for({storyURL})`
 			<img class='npc' src=${`./imgs/npcs/${npc}.png`} />
