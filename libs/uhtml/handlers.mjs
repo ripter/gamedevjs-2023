@@ -1,7 +1,7 @@
-import { diffable } from "./uwire.mjs";
-import { aria, attribute, boolean, event, ref, setter, text } from "./uhandlers.mjs";
-import udomdiff from "./udomdiff.mjs";
-import { isArray, createTextNode } from "./utils.mjs";
+import { diffable } from './uwire.mjs';
+import { aria, attribute, boolean, event, ref, setter, text } from './uhandlers.mjs';
+import udomdiff from './udomdiff.mjs';
+import { isArray, createTextNode } from './utils.mjs';
 
 // from a generic path, retrieves the exact targeted node
 const reducePath = ({ childNodes }, i) => childNodes[i];
@@ -143,4 +143,4 @@ export function handlers(options) {
 	type === 'attr' ?
 	handleAttribute(node, options.name /*, options.svg*/) :
 	text(node);
-};
+}

@@ -1,7 +1,6 @@
 import { html } from '../libs/uhtml/index.mjs';
 
 import { parseTags } from '../utils/parseTags.mjs';
-import { determineDifficulty } from '../utils/determineDifficulty.mjs';
 
 
 /**

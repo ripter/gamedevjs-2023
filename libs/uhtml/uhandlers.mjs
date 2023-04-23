@@ -1,4 +1,4 @@
-import { isArray } from "./uarray.mjs";
+import { isArray } from './uarray.mjs';
 
 // flag for foreign checks (slower path, fast by default)
 let useForeign = false;

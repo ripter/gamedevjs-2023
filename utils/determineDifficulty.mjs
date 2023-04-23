@@ -17,10 +17,10 @@
   }
 
   if (probability >= 0.70) {
-    return 'Easy'
+    return 'Easy';
   } else if (probability >= 0.5) {
-    return 'Moderate'
+    return 'Moderate';
   } else {
-    return 'Challenging'
+    return 'Challenging';
   }
 }

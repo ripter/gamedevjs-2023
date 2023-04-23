@@ -29,4 +29,8 @@ export class Ship {
 		const value = this[system].value;
 		return `${value}%`;
 	}
+
+	getSystemLabel(system) {
+		return formatPropName(system);
+	}
 }

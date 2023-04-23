@@ -6,7 +6,7 @@ import { html } from '../libs/uhtml/index.mjs';
  * @params {(ChoiceItem) => void} onClick
 */
 export function ChoiceHover(choiceItem, onClick, onOver, onOut) {
-	const { text, index, url } = choiceItem;
+	const { text } = choiceItem;
 	
 	return html.for(choiceItem)`<li 
 		class="choice choice-image-mask" 

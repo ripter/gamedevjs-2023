@@ -1,8 +1,8 @@
-import { WeakMapSet } from "./mapset.mjs";
-import instrument from "./uparser.mjs";
-import { persistent } from "./uwire.mjs";
-import { handlers } from "./handlers.mjs";
-import { isArray, indexOf, createContent, createTreeWalker, importNode } from "./utils.mjs";
+import { WeakMapSet } from './mapset.mjs';
+import instrument from './uparser.mjs';
+import { persistent } from './uwire.mjs';
+import { handlers } from './handlers.mjs';
+import { isArray, indexOf, createContent, createTreeWalker, importNode } from './utils.mjs';
 
 // from a fragment container, create an array of indexes
 // related to its child nodes, so that it's possible
@@ -210,4 +210,3 @@ export class Hole {
 		this.template = template;
 		this.values = values;
 	}}
-;

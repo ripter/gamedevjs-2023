@@ -27,22 +27,24 @@ export async function pageShip(selector) {
 	const elm = document.querySelector(selector);
 	const state = signal({});
 	
+	// Goto the next page.
 	const handleClick = (item) => {
-		console.log('clicked', item);
 		if (item.nextPage) {
 			item.nextPage();
 		}
-	}
+	};
+	// Add the mask on over
 	const handleOver = (item) => {
 		state.value = {
 			maskURL: item.img,
-		}	
-	}
-	const handleOut = (item) => {
+		};	
+	};
+	// Remove the mask on out.
+	const handleOut = () => {
 		state.value = {
 			maskURL: null,
-		}	
-	}
+		};	
+	};
 	
 	//
 	// Render the page.
@@ -59,5 +61,5 @@ export async function pageShip(selector) {
 				</ul>	
 			</div>
 		`);	
-	})	
+	});	
 }

@@ -27,7 +27,7 @@ export class Player {
 			this[skill] = {
 				value: 1,
 				events: [],
-			}
+			};
 		});
 
 		// Events are things that has happend to the Player over the course of the game
@@ -42,7 +42,7 @@ export class Player {
 	 * @returns {string} "n/10"
 	 */
 	getSkillValue(skillName) {
-		 const { value = 0 } = this[skillName];
-		 return `${value}/10`;
+		const { value = 0 } = this[skillName];
+		return `${value}/10`;
 	}
 }

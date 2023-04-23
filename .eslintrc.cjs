@@ -11,9 +11,10 @@ module.exports = {
         'sourceType': 'module'
     },
     'rules': {
-        'indent': ['error', 'tab'],
+        'indent': ['off', 'tab'],
         'linebreak-style': ['error', 'unix'],
         'quotes': ['error', 'single'],
         'semi': ['error', 'always']
-    }
+    },
+    "ignorePatterns": ["**/libs/*.js"],
 };

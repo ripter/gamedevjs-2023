@@ -4,26 +4,26 @@
 export function getSkillDescription(value) {
 	switch (value) {
 		case 1:
-			return "Novice";
+			return 'Novice';
 		case 2:
-			return "Beginner";
+			return 'Beginner';
 		case 3:
-			return "Developing";
+			return 'Developing';
 		case 4:
-			return "Improving";
+			return 'Improving';
 		case 5:
-			return "Competent";
+			return 'Competent';
 		case 6:
-			return "Skilled";
+			return 'Skilled';
 		case 7:
-			return "Advanced";
+			return 'Advanced';
 		case 8:
-			return "Expert";
+			return 'Expert';
 		case 9:
-			return "Masterful";
+			return 'Masterful';
 		case 10:
-			return "Legendary";
+			return 'Legendary';
 		default:
-			return "Unknown";
+			return 'Unknown';
 	}
 }

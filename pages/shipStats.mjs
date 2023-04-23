@@ -25,7 +25,7 @@ export async function pageShipStats(selector, backUrl) {
 		const handleClick = (item) => {
 			// Update the Active/Selected Item.	
 			activeIdx.value = allChoices.findIndex(choice => choice.text === item.text);
-		}
+		};
 		
 		elm.style.backgroundImage = `url(./imgs/ship/${activeItem.background})`;
 		render(elm, html`

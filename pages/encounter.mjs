@@ -19,17 +19,17 @@ export async function pageEncounter(selector, storyURL) {
 		rollDice: (skillName) => {
 			const skillLevel = window.player.skills[skillName];
 			const diceResults = rollDice(skillLevel);
-			story.setVariable('time',  diceResults.reduce((acc, value) => {return acc + value}, 0));
+			story.setVariable('time',  diceResults.reduce((acc, value) => {return acc + value;}, 0));
 		},	
 		// Updates the Ship
 		updateShip: (propName, deltaValue) => {
 			console.log('Change Ship', propName, 'by', deltaValue);
-			return "Ok damage the {freakin|strange|large} ship."	
+			return 'Ok damage the {freakin|strange|large} ship.';	
 		},	
 		// Updates the Player
 		updatePlayer:	(propName, deltaValue) => {
 			console.log('Change Player', propName, 'by', deltaValue);
-			return "Ok damage the {amazing|cool|awesome} player."	
+			return 'Ok damage the {amazing|cool|awesome} player.';	
 		},
 		// Called when the Encounter is over.
 		onGameOver: () => {
@@ -44,7 +44,7 @@ export async function pageEncounter(selector, storyURL) {
 	// Render the page.
 	elm.className = 'page page-encounter';
 	effect(() => {
-		const { tags, body, choiceList, turnsLeft } = state.value;
+		const { tags, body, choiceList } = state.value;
 		const { choiceType, background, title } = tags;
 		const Choice = getChoiceComponent(choiceType);
 		

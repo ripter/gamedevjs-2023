@@ -1,5 +1,5 @@
-import { MapSet, WeakMapSet } from "./mapset.mjs";
-import { Hole, createCache, unroll } from "./rabbit.mjs";
+import { MapSet, WeakMapSet } from './mapset.mjs';
+import { Hole, createCache, unroll } from './rabbit.mjs';
 
 // both `html` and `svg` template literal tags are polluted
 // with a `for(ref[, id])` and a `node` tag too
