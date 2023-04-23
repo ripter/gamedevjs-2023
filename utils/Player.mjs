@@ -1,3 +1,4 @@
+import { getRandomItemFromArray } from '../utils/getRandomItemFromArray.mjs';
 
 /**
  * Holds all of the Player data.
@@ -44,5 +45,9 @@ export class Player {
 	getSkillValue(skillName) {
 		const { value = 0 } = this[skillName];
 		return `${value}/10`;
+	}
+
+	getRandomSkill() {
+  	return getRandomItemFromArray(this.skills);
 	}
 }

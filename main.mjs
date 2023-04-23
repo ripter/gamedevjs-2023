@@ -7,7 +7,7 @@ import { pageShip } from '../pages/ship.mjs';
 import { pageYourStats } from '../pages/yourStats.mjs';
 import { pageShipStats } from '../pages/shipStats.mjs';
 
-import { clickToEncounter } from '../utils/clickToEncounter.mjs';
+import { clickToDialog } from '../utils/clickToDialog.mjs';
 import { Player } from '../utils/Player.mjs';
 import { Ship } from '../utils/Ship.mjs';
 
@@ -20,12 +20,8 @@ window.ship = new Ship();
 
 // keep track of which page we should show.
 const currentPage = window.currentPage = signal({
-	// url: 'intro',
-	// args: [clickToEncounter('encounter-astroid')]
-	// url: 'dialog',
-	// args: [`ink/day1.json`],
-	url: 'page',
-	args: [],
+	url: 'titleScreen',
+	args: [clickToDialog('dialog-start-game')],
 });
 
 //

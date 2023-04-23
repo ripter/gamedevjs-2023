@@ -20,9 +20,14 @@ export class Ship {
 		this.criticalSystems.forEach(name => {
 			this[name] = {
 				value: 100,
-				events: ['maintenance-perfect'],
+				events: new Set(['maintenance-perfect']),
 			};
 		});
+		// Population is also a stat
+		this.population = {
+			value: 1_000_500,
+			envents: new Set(),
+		};
 	}
 
 	getSystemValue(system) {

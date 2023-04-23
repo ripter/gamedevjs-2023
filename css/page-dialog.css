@@ -8,18 +8,28 @@
 }
 
 .page-dialog .story-text {
-	position: absolute;
-	right: 0;
-	width: 70%;
-	padding: 1em;
-}
-
-.page-dialog .choice-list {
-	position: absolute;
-	bottom: 0;
-	width: 70%;
-	right: 0;
-	
+	align-items: center;
+	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+	float: right;
+	height: 100%;
+	justify-content: space-between;
+	margin: 0;
+	overflow: scroll;
+	padding: 1em;
+	width: 70%;
+}
+
+
+.page-dialog .choice-list {
+	width: 100%;
+}
+.page-dialog .choice-list.--count-2, 
+.page-dialog .choice-list.--count-4 {
+	display: block;
+}
+
+.page-dialog .choice-list .choice {
+	margin: 1em;
 }

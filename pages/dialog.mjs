@@ -14,6 +14,12 @@ export async function pageDialog(selector, storyURL) {
 	//
 	// Load the story
 	const story = await Story.load(storyURL, {
+		'triggerEvent': (code) => {
+			console.log('code', code);
+		},
+		'nextPage': (type, arg) => {
+			console.log('next page', type, arg);
+		},
 	});
 	
 	//
@@ -31,14 +37,16 @@ export async function pageDialog(selector, storyURL) {
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
 			<img class='npc' src=${`./imgs/npcs/${npc}.png`} />
-			<div class='story-text'>
-				${body.map(text => html`<p>${text}</p>`)}	
+			<div class="position-relative story-text">
+				<div class=''>
+					${body.map(text => html`<p>${text}</p>`)}	
+				</div>
+				<ul class=${`choice-list --count-${choiceList.length}`}>
+					${choiceList.map((item, choiceIdx) => Choice({item, onClick: () => {
+						state.value = story.pickChoice(choiceIdx);
+					}}))}
+				</ul>
 			</div>
-			<ul class=${`choice-list --count-${choiceList.length}`}>
-				${choiceList.map(item => Choice(item, (choiceIdx) => {
-					state.value = story.pickChoice(choiceIdx);
-				}))}
-			</ul>
 		`);	
 	});
 }

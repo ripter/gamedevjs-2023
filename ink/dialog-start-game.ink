@@ -1,3 +1,9 @@
+
+// How to use:
+// `background`, `npc` set images in the dialog page.
+EXTERNAL triggerEvent(code)
+EXTERNAL nextPage(type, value)
+
 -> start
 
 === start ===
@@ -44,7 +50,17 @@ Today, take some time to tour the ship and explore its different areas. This wil
 
 Enjoy the exploration and make the most of this exciting day.
 
-    
+    * [Thanks Mom!]
+        ~ triggerEvent("mom")
+        -> END
+    * [Thanks Dad!]
+        ~ triggerEvent("dad")
+        -> END
+    * [Thank You]
+        -> END
+    * [Leave]
+        ~ triggerEvent("thank-no-one")
+        -> END
 
 
 -> END
