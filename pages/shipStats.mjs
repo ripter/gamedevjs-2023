@@ -8,11 +8,8 @@ import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
 /**
  * Page to show the Ship stats
 */
-export async function pageShipStats(selector, backUrl) {
-	const elm = document.querySelector(selector);
+export async function pageShipStats(elm, backUrl) {
 	const activeIdx = signal(0);
-	
-	
 	
 	//
 	// Render the page.

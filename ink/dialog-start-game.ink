@@ -2,7 +2,7 @@
 // How to use:
 // `background`, `npc` set images in the dialog page.
 EXTERNAL triggerEvent(code)
-EXTERNAL nextPage(type, value)
+EXTERNAL nextPage(url, value)
 
 -> start
 
@@ -52,14 +52,18 @@ Enjoy the exploration and make the most of this exciting day.
 
     * [Thanks Mom!]
         ~ triggerEvent("mom")
+        ~ nextPage("ship", "dialog-intro")
         -> END
     * [Thanks Dad!]
         ~ triggerEvent("dad")
+        ~ nextPage("ship", "dialog-intro")
         -> END
     * [Thank You]
+        ~ nextPage("ship", "dialog-intro")
         -> END
     * [Leave]
         ~ triggerEvent("thank-no-one")
+        ~ nextPage("ship", "dialog-intro")
         -> END
 
 

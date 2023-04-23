@@ -4,9 +4,9 @@ export const ACHIEVEMENTS = [
 	{ code: 'born', text: 'You where born! +1 all skills.' },
 	{ code: 'astroid-perfect', text: 'You saved the ship from the astroid attack! There was no damage at all! "Mother" says your piloting skills have gone up!' },
 	{ code: 'maintenance-perfect', text: 'Ship Maintenance - Everything is perfect.' },
-	{ code: 'mom', text: 'You thanked Mom on your 18th birthday', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
-	{ code: 'dad', text: 'You thanked Dad on your 18th birthday', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},},
-	{ code: 'thank-no-one', text: 'You gave no thanks on your 18th birthday'},
+	{ code: 'mom', text: 'You thanked Mom on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
+	{ code: 'dad', text: 'You thanked Dad on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
+	{ code: 'thank-no-one', text: 'You gave no thanks on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
 ];
 
 /**

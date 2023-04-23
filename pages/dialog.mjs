@@ -3,22 +3,29 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { Story } from '../utils/Story.mjs';
 import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
+import { triggerAchievement } from '../const/achievements.mjs';
 
 /**
  * Page to handle Dialogs
 */
-export async function pageDialog(selector, storyURL) {
-	const elm = document.querySelector(selector);
+export async function pageDialog(elm, storyURL) {
 	const state = signal({});
+	let dispose;
 	
 	//
 	// Load the story
 	const story = await Story.load(storyURL, {
 		'triggerEvent': (code) => {
 			console.log('code', code);
+			triggerAchievement(code);
 		},
-		'nextPage': (type, arg) => {
-			console.log('next page', type, arg);
+		'nextPage': (url, arg) => {
+			console.log('next page', url, arg);
+			dispose();
+			window.currentPage.value = {
+				url,
+				args: [arg],
+			};
 		},
 	});
 	
@@ -29,13 +36,15 @@ export async function pageDialog(selector, storyURL) {
 	//
 	// Render the page.
 	elm.className = 'page page-dialog';
-	effect(() => {
+	dispose = effect(() => {
 		const { body, choiceList, tags } = state.value;
 		const { background, npc } = tags;
 		const Choice = getChoiceComponent('basic');
+
+		console.log('re-render pageDialog');
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
-		render(elm, html`
+		render(elm, html.for({storyURL})`
 			<img class='npc' src=${`./imgs/npcs/${npc}.png`} />
 			<div class="position-relative story-text">
 				<div class=''>

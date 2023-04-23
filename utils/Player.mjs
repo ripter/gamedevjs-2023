@@ -1,4 +1,5 @@
 import { getRandomItemFromArray } from '../utils/getRandomItemFromArray.mjs';
+import { getAchievement } from '../const/achievements.mjs';
 
 /**
  * Holds all of the Player data.
@@ -33,7 +34,7 @@ export class Player {
 
 		// Events are things that has happend to the Player over the course of the game
 		this.healthcare.events = [
-			'born',
+			getAchievement('born').text,
 		];
 	}
 

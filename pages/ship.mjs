@@ -23,15 +23,19 @@ const links = [
 /**
  * Page Pick a ship location,
 */
-export async function pageShip(selector) {
-	const elm = document.querySelector(selector);
+export async function pageShip(elm, nextInk) {
 	const state = signal({});
+	let dispose;
 	
 	// Goto the next page.
 	const handleClick = (item) => {
 		if (item.nextPage) {
-			item.nextPage();
+			return item.nextPage();
 		}
+		window.currentPage.value = {
+			url: 'dialog',
+			args: [`ink/${nextInk}.json`],
+		};
 	};
 	// Add the mask on over
 	const handleOver = (item) => {
@@ -49,8 +53,13 @@ export async function pageShip(selector) {
 	//
 	// Render the page.
 	elm.className = 'page page-ship';
-	effect(() => {
+	elm.removeAttribute('style');
+	// elm.style.backgroundImage = '';
+	console.log('render ship on elm', elm);
+	dispose = effect(() => {
 		const { maskURL } = state.value;
+		console.log('re-render pageShip');
+
 		render(elm, html`
 			${maskURL && 
 				html`<img class="mask" src=${maskURL} />`

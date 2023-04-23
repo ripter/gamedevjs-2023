@@ -7,6 +7,58 @@ import { formatPropName } from '../utils/formatPropName.mjs';
 import { getAchievement } from '../const/achievements.mjs';
 import { getSkillDescription } from '../utils/getSkillDescription.mjs';
 
+
+
+/**
+ * Page to show the user's stats and upgrades.
+*/
+export async function pageYourStats(elm, backUrl, background) {
+	const activeIdx = signal(0);
+	
+	
+	// Set Clicked button's item as the active choice.
+	const handleClick = (item) => {
+		activeIdx.value = allChoices.findIndex(choice => choice.skill === item.skill);
+	};
+	
+	//
+	// Render the page.
+	elm.className = 'page page-your-stats';
+	effect(() => {
+		const { player } = window;
+		const choices = allChoices.map(choice => ({
+			...choice,
+			text: `${formatPropName(choice.skill)} (${player.getSkillValue(choice.skill)})`,
+		}));
+		const leftChoiceList = choices.slice(0, 5);
+		const rightChoiceList = choices.slice(5);
+		const activeItem = allChoices[activeIdx.value];
+		const playerSkill = player.getSkillValue(activeItem.skill);
+		const skillAdj = getSkillDescription(player[activeItem.skill].value);
+		const events = player[activeItem.skill].events;//.map(getAchievement);
+		console.log('events', activeItem.skill,  events)
+		
+		elm.style.backgroundImage = `url(./imgs/${background})`;
+		render(elm, html`
+			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: clickToGoBack(backUrl), className: 'btn-back'})}
+			<ul class='choice-list'>
+				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
+			</ul>	
+			<dl class="hero paper">
+				<dt>${`${formatPropName(activeItem.skill)}  ${playerSkill}  ${skillAdj}`}</dt>
+				<dd>${activeItem.description}</dd>
+
+				${events.length >= 0 && html`<dt>Achievements</dt>`}
+				${events.map(event => html`<dd>${event}</dd>`)}
+			</dl>
+			<ul class='choice-list'>
+				${rightChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
+			</ul>	
+
+		`);	
+	});	
+}
+
 const allChoices = [
 	{
 		skill: 'social',
@@ -50,53 +102,3 @@ const allChoices = [
 	}
 ];
 
-
-/**
- * Page to show the user's stats and upgrades.
-*/
-export async function pageYourStats(selector, backUrl, background) {
-	const elm = document.querySelector(selector);
-	const activeIdx = signal(0);
-	
-	
-	// Set Clicked button's item as the active choice.
-	const handleClick = (item) => {
-		activeIdx.value = allChoices.findIndex(choice => choice.skill === item.skill);
-	};
-	
-	//
-	// Render the page.
-	elm.className = 'page page-your-stats';
-	effect(() => {
-		const { player } = window;
-		const choices = allChoices.map(choice => ({
-			...choice,
-			text: `${formatPropName(choice.skill)} (${player.getSkillValue(choice.skill)})`,
-		}));
-		const leftChoiceList = choices.slice(0, 5);
-		const rightChoiceList = choices.slice(5);
-		const activeItem = allChoices[activeIdx.value];
-		const playerSkill = player.getSkillValue(activeItem.skill);
-		const skillAdj = getSkillDescription(player[activeItem.skill].value);
-		const events = player[activeItem.skill].events.map(getAchievement);
-		
-		elm.style.backgroundImage = `url(./imgs/${background})`;
-		render(elm, html`
-			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: clickToGoBack(backUrl), className: 'btn-back'})}
-			<ul class='choice-list'>
-				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
-			</ul>	
-			<dl class="hero paper">
-				<dt>${`${formatPropName(activeItem.skill)}  ${playerSkill}  ${skillAdj}`}</dt>
-				<dd>${activeItem.description}</dd>
-
-				${events.length >= 0 && html`<dt>Achievements</dt>`}
-				${events.map(event => html.for(event)`<dd>${event.text}</dd>`)}
-			</dl>
-			<ul class='choice-list'>
-				${rightChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
-			</ul>	
-
-		`);	
-	});	
-}

@@ -3,8 +3,7 @@ import { render, html } from '../libs/uhtml/index.mjs';
 /**
  * Page that shows the Title Screen.
 */
-export function pageTitleScreen(selector, onClick) {
-	const elm = document.querySelector(selector);
+export function pageTitleScreen(elm, onClick) {
 	elm.className = 'page page-title';
 	
 	render(elm, html`

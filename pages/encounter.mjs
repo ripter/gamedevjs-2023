@@ -9,8 +9,7 @@ import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
  * Page for Encounters.
  * Encounters serve as the central gameplay mechanism, providing players with an engaging challenge that tests their abilities, strategies, and luck, and ultimately determines their success or failure in the game.
 */
-export async function pageEncounter(selector, storyURL) {
-	const elm = document.querySelector(selector);
+export async function pageEncounter(elm, storyURL) {
 	const state = signal({});
 	//
 	// Load the story

@@ -22,26 +22,38 @@ window.ship = new Ship();
 const currentPage = window.currentPage = signal({
 	url: 'titleScreen',
 	args: [clickToDialog('dialog-start-game')],
+	// url: 'ship',
+	// args: [],
 });
 
 //
 // Handle Page "routes"
 effect(() => {
+	const elm = document.querySelector('#gamearea');
+
 	const {url, args} = currentPage.value;
-	switch(url) {
-		case 'dialog':
-			return pageDialog('#gamearea', ...args);
-		case 'encounter': 
-			return pageEncounter('#gamearea', ...args);
-		case 'page':
-			return pageShip('#gamearea');
-		case 'yourStats':
-			return pageYourStats('#gamearea', ...args);
-		case 'shipStats':
-			return pageShipStats('#gamearea', ...args);
-		default:
-			return pageTitleScreen('#gamearea', ...args);
-	}	
+	console.log('LoadingURL', url, args);
+
+	// elm.innerHTML = '';
+
+	setTimeout(() => {
+		switch(url) {
+			case 'dialog':
+				console.log('loading dialog page');
+				return pageDialog(elm, ...args);
+			case 'encounter': 
+				return pageEncounter(elm, ...args);
+			case 'ship':
+				console.log('loading ship page');
+				return pageShip(elm, ...args);
+			case 'yourStats':
+				return pageYourStats(elm, ...args);
+			case 'shipStats':
+				return pageShipStats(elm, ...args);
+			default:
+				return pageTitleScreen(elm, ...args);
+		}	
+	}, 1);
 });
 
 
