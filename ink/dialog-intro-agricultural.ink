@@ -1,5 +1,11 @@
 // How to use:
+// Global Vars given to every dialog story.
+VAR timePlayer = 0
+VAR timeSinceLastRun = 0
+VAR totalVisits = 0
+// Tags:
 // `background`, `npc` set images in the dialog page.
+// Functions allow updating the game state and moving onto the next page.
 EXTERNAL triggerEvent(code)
 EXTERNAL nextPage(url, value)
 
@@ -8,6 +14,9 @@ EXTERNAL nextPage(url, value)
 === start ===
 #background: ship/agricultural_zone.png
 
+timePlayer: {timePlayer}
+timeSinceLastRun: {timeSinceLastRun}
+totalVisits: {totalVisits}
 
 You arrive at the lush Agricultural Zone, a vast area filled with greenery, crops, and plant life that sustains the ship's population. The soft hum of the artificial sunlight panels and the sound of water trickling in the hydroponic systems create a soothing atmosphere.
 

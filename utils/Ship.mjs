@@ -30,7 +30,7 @@ export class Ship {
 		};
 		// Zones are locations on the ship.
 		this.zones = [
-			{ text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png', zone: 'agricultural', isDisabled: true },
+			{ text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png', zone: 'agricultural', isDisabled: false },
 			{ text: 'Central Hub', img: '../imgs/ship/central.png', zone: 'central' },
 			{ text: 'Commercial District', img: '../imgs/ship/comercal.png', zone: 'commercial' },
 			{ text: 'Cultural and Arts District', img: '../imgs/ship/arts.png', zone: 'culture' },
@@ -41,6 +41,25 @@ export class Ship {
 			{ text: 'Research Complex', img: '../imgs/ship/research.png', zone: 'research' },
 			{ text: 'Residential Districts', img: '../imgs/ship/residential.png', zone: 'residential' },
 		];
+		// Areas inside of zones
+		this.areas = {
+			agricultural: {
+				garden: 0,
+				hydroponics: 0,
+				sunlight: 0,
+			},
+			central: {
+				communication: 0,
+				broadcast: 0,
+				cockpit: 0,
+			},
+			commercial: {
+				restaurants: 0,
+				shops: 0,
+				streets: 0,
+				office: 0,
+			},
+		};
 	}
 
 	getSystemValue(system) {

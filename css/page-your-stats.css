@@ -7,6 +7,14 @@
 	justify-content: space-between;
 }
 
+#page-your-status h4 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: var(--color-white-1a);
+	font-family: var(--choice-font-family);
+}
+
 /* Hero Element */
 #page-your-status .hero {
 	background-color: var(--color-white-1a);

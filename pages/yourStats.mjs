@@ -40,6 +40,7 @@ export async function pageYourStats(elm, backUrl, background) {
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
 			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: () => {dispose(); clickToGoBack()()}, className: 'btn-back'})}
+			<h4>TIME: ${player.time}</h4>
 			<ul class='choice-list'>
 				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
 			</ul>	

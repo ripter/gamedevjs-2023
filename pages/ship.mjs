@@ -5,6 +5,7 @@ import { ChoiceHover } from '../components/ChoiceHover.mjs';
 import { clickToYourStats } from '../utils/clickToYourStats.mjs';
 import { clickToShipStats } from '../utils/clickToShipStats.mjs';
 
+
 /**
  * Page Pick a ship location,
 */
@@ -12,10 +13,10 @@ export async function pageShip(elm, nextInk) {
 	const state = signal({});
 
 	// Add the Stat pages to the skip zone list.
-	// const links = [ ...window.ship.zones,
-	// 	{text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png')},
-	// 	{text: 'Ship Stats', img: null, nextPage: clickToShipStats()},
-	// ];
+	const STATIC_OPTIONS = [
+		{ text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png') },
+		{ text: 'Ship Stats', img: null, nextPage: clickToShipStats() },
+	];
 	
 	// Goto the next page.
 	const handleClick = (item) => {
@@ -55,8 +56,7 @@ export async function pageShip(elm, nextInk) {
 		// Add the Stat pages to the skip zone list.
 		const links = [
 			...window.ship.zones,
-			{ text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png') },
-			{ text: 'Ship Stats', img: null, nextPage: clickToShipStats() },
+			...STATIC_OPTIONS,
 		];
 
 		render(elm, html`

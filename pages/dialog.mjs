@@ -6,11 +6,13 @@ import { Story } from '../utils/Story.mjs';
 import { triggerAchievement } from '../const/achievements.mjs';
 
 
+const visitLog = new Map();
 /**
  * Page to handle Dialogs
 */
 export async function pageDialog(elm, storyURL) {
 	const state = signal({});
+	const visitTimes = visitLog.has(storyURL) ? visitLog.get(storyURL) : [];
 	let dispose;
 	
 	//
@@ -28,6 +30,16 @@ export async function pageDialog(elm, storyURL) {
 			};
 		},
 	});
+
+	//Set the global vars
+	story.setVariable('timePlayer', window.player.time);
+	story.setVariable('timeSinceLastRun', visitTimes.length > 0 ? 
+		visitTimes[visitTimes.length-1] - window.player.time
+		: 0);
+	story.setVariable('totalVisits', visitTimes.length);
+
+	// Now mark this visit.
+	visitTimes.push(window.player.time);
 	
 	//
 	// Start the story
@@ -45,7 +57,7 @@ export async function pageDialog(elm, storyURL) {
 			elm.style.backgroundImage = `url(./imgs/${background})`;
 		}
 		render(elm, html.for({storyURL})`
-			<img class='npc' src=${`./imgs/npcs/${npc}.png`} />
+			${npc && html`<img class='npc' src=${`./imgs/npcs/${npc}.png`} />`}
 			<div class="position-relative story-text">
 				<div class=''>
 					${body.map(text => html`<p>${text}</p>`)}	

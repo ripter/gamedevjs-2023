@@ -20,10 +20,10 @@ window.ship = new Ship();
 
 // keep track of which page we should show.
 const currentPage = window.currentPage = signal({
-	// url: 'titleScreen',
-	// args: [clickToDialog('dialog-start-game')],
-	url: 'ship',
-	args: [],
+	url: 'titleScreen',
+	args: [clickToDialog('dialog-start-game')],
+	// url: 'ship',
+	// args: [],
 });
 
 //
