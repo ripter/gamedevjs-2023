@@ -6,6 +6,9 @@ import { getAchievement } from '../const/achievements.mjs';
 */
 export class Player {
 	constructor() {
+		// TIME is the "turn number" or "life" of the Player. Time is always moving forward.
+		// anytime `triggerAchievement` is called, the player's TIME goes up.
+		this.time = 0;
 		// Happiness is the the player's "score" in the game.
 		this.happiness = 100;
 		// Health is a percent, 100 is perfect health.

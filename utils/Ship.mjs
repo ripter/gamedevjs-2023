@@ -30,7 +30,7 @@ export class Ship {
 		};
 		// Zones are locations on the ship.
 		this.zones = [
-			{ text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png', zone: 'agricultural' },
+			{ text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png', zone: 'agricultural', isDisabled: true },
 			{ text: 'Central Hub', img: '../imgs/ship/central.png', zone: 'central' },
 			{ text: 'Commercial District', img: '../imgs/ship/comercal.png', zone: 'commercial' },
 			{ text: 'Cultural and Arts District', img: '../imgs/ship/arts.png', zone: 'culture' },
@@ -50,5 +50,12 @@ export class Ship {
 
 	getSystemLabel(system) {
 		return formatPropName(system);
+	}
+
+	/** 
+	 * Returns the Zone Option by zone name
+	*/
+	getZoneOption(zoneName) {
+		return this.zones.find(option => option.zone === zoneName);
 	}
 }

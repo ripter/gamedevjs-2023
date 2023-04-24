@@ -6,6 +6,8 @@
 	--color-foreground: #7FDBFF;
 	
 	--color-yellow: #FFDC00;
+	--color-choice-box-shadow: #DDD;
+	--color-choice-box-shadow-hover: var(--color-yellow);
 
 	--color-black-1: #111111;
 	--color-black-1a: #111111BB;

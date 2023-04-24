@@ -1,14 +1,17 @@
 .choice {
+	--choice-shadow-normal: var(--color-choice-box-shadow) 3px 5px 8px;
+	--choice-shadow-hover: var(--color-choice-box-shadow-hover) 3px 5px 8px;
+
 	border: thin solid white;	
 	cursor: pointer;
 	color: white;
 	background-color: var(--color-black-1a);
 	padding: 0.5em;
-	box-shadow: #ddd 3px 5px 8px;
+	box-shadow: var(--choice-shadow-normal);
 	font-family: var(--choice-font-family);
 }
 .choice:hover {
-	box-shadow: var(--color-yellow) 3px 5px 8px;
+	box-shadow: var(--choice-shadow-hover);
 }
 
 .choice .text {
@@ -20,4 +23,15 @@
 .choice.--active {
 	background-color: white;
 	color: var(--color-black-1a);
+}
+
+.choice.--disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+	box-shadow: none;
+
+}
+.choice.--disabled:hover {
+	/* box-shadow: var(--choice-shadow-normal); */
+	/* background-color: red; */
 }

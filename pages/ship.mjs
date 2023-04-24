@@ -12,13 +12,17 @@ export async function pageShip(elm, nextInk) {
 	const state = signal({});
 
 	// Add the Stat pages to the skip zone list.
-	const links = [ ...window.ship.zones,
-		{text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png')},
-		{text: 'Ship Stats', img: null, nextPage: clickToShipStats()},
-	];
+	// const links = [ ...window.ship.zones,
+	// 	{text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png')},
+	// 	{text: 'Ship Stats', img: null, nextPage: clickToShipStats()},
+	// ];
 	
 	// Goto the next page.
 	const handleClick = (item) => {
+		// ignore disabled clicks.
+		if (item.isDisabled) {
+			return;
+		}
 		// if there is a nextPage function, use that.
 		if (item.nextPage) {
 			return item.nextPage();
@@ -44,10 +48,16 @@ export async function pageShip(elm, nextInk) {
 	
 	//
 	// Render the page.
-	elm.className = 'page page-ship';
-	elm.removeAttribute('style');
+	// elm.removeAttribute('style');
 	effect(() => {
 		const { maskURL } = state.value;
+		
+		// Add the Stat pages to the skip zone list.
+		const links = [
+			...window.ship.zones,
+			{ text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png') },
+			{ text: 'Ship Stats', img: null, nextPage: clickToShipStats() },
+		];
 
 		render(elm, html`
 			${maskURL && 
@@ -59,7 +69,8 @@ export async function pageShip(elm, nextInk) {
 						item, 
 						onClick:handleClick, 
 						onOver:handleOver, 
-						onOut:handleOut
+						onOut:handleOut,
+						className: item.isDisabled ? '--disabled' : '',
 					}))}
 				</ul>	
 			</div>

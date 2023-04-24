@@ -1,20 +1,20 @@
-.page-ship {
+#page-ship-zone {
 	background-image: url('../imgs/ship/outside.png');	
 }
 
-.page-ship .mask {
+#page-ship-zone .mask {
 	opacity: 0.5;
 	transition: opacity 0.5s ease;
 	width: 100%;
 	height: 100%;
 }
 
-.page-ship .choice-list {
+#page-ship-zone .choice-list {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	position: static;
 }
-.page-ship .choice-list .choice {
+#page-ship-zone .choice-list .choice {
 	margin: 0.25em 0.25em;	
 }

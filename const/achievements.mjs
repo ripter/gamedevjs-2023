@@ -1,4 +1,5 @@
 import { deltaRandomSkill } from '../actions/deltaRandomSkill.mjs';
+import { disableZone } from '../actions/disableZone.mjs';
 import { logEvent } from '../actions/logEvent.mjs';
 
 export const ACHIEVEMENTS = [
@@ -8,9 +9,18 @@ export const ACHIEVEMENTS = [
 	{ code: 'mom', text: 'You thanked Mom on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
 	{ code: 'dad', text: 'You thanked Dad on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
 	{ code: 'thank-no-one', text: 'You gave no thanks on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
-	{ code: 'meet-riley', text: 'You meet Riley', action: (eventMsg) => logEvent(eventMsg, window.player, 'social')},
-	{ code: 'meet-morgan', text: 'You meet Morgan', action: (eventMsg) => logEvent(eventMsg, window.player, 'social')},
-	{ code: 'meet-riley-flirty', text: 'You meet Riley', action: (eventMsg) => logEvent(eventMsg, window.player, 'agriculture')},
+	{ code: 'meet-riley', text: 'You meet Riley', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('agricultural');
+	}},
+	{ code: 'meet-morgan', text: 'You meet Morgan', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('agricultural');
+	}},
+	{ code: 'meet-riley-flirty', text: 'You meet Riley', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'agriculture');
+		disableZone('agricultural');
+	}},
 ];
 
 /**
@@ -31,5 +41,8 @@ export function triggerAchievement(code) {
 	if (!event) {
 		throw new Error(`Could not find an achievement for the code "${code}"`);
 	}
+	// Run the event first.
 	event.action(event.text);
+	console.log('TIME PASSES BY');
+	window.player.time += 1;
 }
