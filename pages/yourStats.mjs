@@ -4,7 +4,6 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
 import { clickToGoBack } from '../utils/clickToGoBack.mjs';
 import { formatPropName } from '../utils/formatPropName.mjs';
-import { getAchievement } from '../const/achievements.mjs';
 import { getSkillDescription } from '../utils/getSkillDescription.mjs';
 
 
@@ -14,6 +13,7 @@ import { getSkillDescription } from '../utils/getSkillDescription.mjs';
 */
 export async function pageYourStats(elm, backUrl, background) {
 	const activeIdx = signal(0);
+	let dispose;
 	
 	
 	// Set Clicked button's item as the active choice.
@@ -24,7 +24,7 @@ export async function pageYourStats(elm, backUrl, background) {
 	//
 	// Render the page.
 	elm.className = 'page page-your-stats';
-	effect(() => {
+	dispose = effect(() => {
 		const { player } = window;
 		const choices = allChoices.map(choice => ({
 			...choice,
@@ -36,11 +36,10 @@ export async function pageYourStats(elm, backUrl, background) {
 		const playerSkill = player.getSkillValue(activeItem.skill);
 		const skillAdj = getSkillDescription(player[activeItem.skill].value);
 		const events = player[activeItem.skill].events;//.map(getAchievement);
-		console.log('events', activeItem.skill,  events)
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
-			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: clickToGoBack(), className: 'btn-back'})}
+			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: () => {dispose(); clickToGoBack()()}, className: 'btn-back'})}
 			<ul class='choice-list'>
 				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}
 			</ul>	

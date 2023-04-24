@@ -1,9 +1,10 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
-import { Story } from '../utils/Story.mjs';
 import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
+import { Story } from '../utils/Story.mjs';
 import { triggerAchievement } from '../const/achievements.mjs';
+
 
 /**
  * Page to handle Dialogs
@@ -39,8 +40,6 @@ export async function pageDialog(elm, storyURL) {
 		const { body, choiceList, tags } = state.value;
 		const { background, npc } = tags;
 		const Choice = getChoiceComponent('basic');
-
-		console.log('render dialog');
 
 		if (background) {
 			elm.style.backgroundImage = `url(./imgs/${background})`;

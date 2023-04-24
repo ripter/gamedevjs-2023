@@ -1,3 +1,32 @@
 .page {
 	background-size: contain;	
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	display: none;
+}
+
+
+/*
+ * "Page" selector
+ */
+.titleScreen #page-intro {
+	display: block;
+}
+.dialog #page-dialog {
+	display: block;
+}
+.encounter #page-encounter {
+	display: block;
+}
+.ship #page-ship-zone {
+	display: block;
+}
+.yourStats #page-your-status {
+	display: block;
+}
+.shipStats #page-ship-status {
+	display: block;
 }

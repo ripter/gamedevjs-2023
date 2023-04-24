@@ -10,7 +10,6 @@ import { clickToShipStats } from '../utils/clickToShipStats.mjs';
 */
 export async function pageShip(elm, nextInk) {
 	const state = signal({});
-	let dispose;
 
 	// Add the Stat pages to the skip zone list.
 	const links = [ ...window.ship.zones,
@@ -18,10 +17,8 @@ export async function pageShip(elm, nextInk) {
 		{text: 'Ship Stats', img: null, nextPage: clickToShipStats()},
 	];
 	
-	console.log('nextInk', nextInk);
 	// Goto the next page.
 	const handleClick = (item) => {
-		dispose();
 		// if there is a nextPage function, use that.
 		if (item.nextPage) {
 			return item.nextPage();
@@ -49,7 +46,7 @@ export async function pageShip(elm, nextInk) {
 	// Render the page.
 	elm.className = 'page page-ship';
 	elm.removeAttribute('style');
-	dispose = effect(() => {
+	effect(() => {
 		const { maskURL } = state.value;
 
 		render(elm, html`

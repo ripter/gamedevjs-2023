@@ -29,29 +29,29 @@ const currentPage = window.currentPage = signal({
 //
 // Handle Page "routes"
 effect(() => {
-	const elm = document.querySelector('#gamearea');
-
 	const {url, args} = currentPage.value;
 	console.log('LoadingURL', url, args);
+	const elm = document.querySelector('#gamearea');
+	// Set the page class on the root to show/hide the correct page.
+	elm.className = url;
 
 	// elm.innerHTML = '';
-
 	setTimeout(() => {
 		switch(url) {
 			case 'dialog':
 				console.log('loading dialog page');
-				return pageDialog(elm, ...args);
+				return pageDialog(document.getElementById('page-dialog'), ...args);
 			case 'encounter': 
-				return pageEncounter(elm, ...args);
+				return pageEncounter(document.getElementById('page-encounter'), ...args);
 			case 'ship':
 				console.log('loading ship page');
-				return pageShip(elm, ...args);
+				return pageShip(document.getElementById('page-ship-zone'), ...args);
 			case 'yourStats':
-				return pageYourStats(elm, ...args);
+				return pageYourStats(document.getElementById('page-your-status'), ...args);
 			case 'shipStats':
-				return pageShipStats(elm, ...args);
+				return pageShipStats(document.getElementById('page-ship-status'), ...args);
 			default:
-				return pageTitleScreen(elm, ...args);
+				return pageTitleScreen(document.getElementById('page-intro'), ...args);
 		}	
 	}, 1);
 });

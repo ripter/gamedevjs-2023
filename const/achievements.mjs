@@ -10,7 +10,7 @@ export const ACHIEVEMENTS = [
 	{ code: 'thank-no-one', text: 'You gave no thanks on your 18th birthday.', action: (eventMsg) => deltaRandomSkill(eventMsg, 1)},
 	{ code: 'meet-riley', text: 'You meet Riley', action: (eventMsg) => logEvent(eventMsg, window.player, 'social')},
 	{ code: 'meet-morgan', text: 'You meet Morgan', action: (eventMsg) => logEvent(eventMsg, window.player, 'social')},
-	{ code: 'meet-riley-flirty', text: 'You meet Riley', action: (eventMsg) => logEvent(eventMsg, window.player, 'mechanical')},
+	{ code: 'meet-riley-flirty', text: 'You meet Riley', action: (eventMsg) => logEvent(eventMsg, window.player, 'agriculture')},
 ];
 
 /**
