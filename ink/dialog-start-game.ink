@@ -8,6 +8,7 @@ VAR totalVisits = 0
 // Functions allow updating the game state and moving onto the next page.
 EXTERNAL triggerEvent(code)
 EXTERNAL nextPage(url, value)
+EXTERNAL completedEvent(code)
 
 
 -> start

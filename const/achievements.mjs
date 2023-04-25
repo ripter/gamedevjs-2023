@@ -30,12 +30,20 @@ export const ACHIEVEMENTS = [
 		disableZone('agricultural');
 	}},
 	{ code: 'meet-riley-flirty', text: 'You meet Riley, a girl you used to like.', action: (eventMsg) => {
-		logEvent(eventMsg, window.player, 'agriculture');
+		logEvent(eventMsg, window.player, 'social');
 		disableZone('agricultural');
 	}},
 	{ code: 'meet-alex', text: 'You meet Alex at the holographic display in the Central Hub.', action: (eventMsg) => {
 		logEvent(eventMsg, window.player, 'social');
 		disableZone('central');
+	}},
+	{ code: 'meet-alex-again', text: 'You meet Alex again, this time in the Engine while he performed maintenance.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('engine');
+	}},
+	{ code: 'meet-alex-first-engine', text: 'You meet Alex in the Engine while he performed maintenance.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('engine');
 	}},
 	{ code: 'meet-jordan', text: 'You meet Officer Jordan in the Central Hub Communication Center.', action: (eventMsg) => {
 		logEvent(eventMsg, window.player, 'social');
@@ -47,11 +55,11 @@ export const ACHIEVEMENTS = [
 		disableZone('commercial');
 	}},
 	{ code: 'notice-victor', text: 'You notice Victor, a prominent merchant.', action: (eventMsg) => {
-		logEvent(eventMsg, window.player, 'economics');
+		logEvent(eventMsg, window.player, 'social');
 		disableZone('commercial');
 	}},
-	{ code: 'notice-victor-suspect', text: 'You notice Victor, a prominent merchant.', action: (eventMsg) => {
-		logEvent(eventMsg, window.player, 'economics');
+	{ code: 'notice-victor-suspect', text: 'You notice Victor, a sleezy merchant.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
 		disableZone('commercial');
 	}},
 	{ code: 'visit-commercial-zone', action: () => disableZone('commercial')},
@@ -71,6 +79,34 @@ export const ACHIEVEMENTS = [
 		// Give a bonus skill for their next play.
 		// This is ok because only th astroid encounter exists in the game, so it's just to show what could have been.
 		deltaRandomSkill(eventMsg, 1);
+	}},
+	{ code: 'meet-isabella', text: 'Isabella helped you paint.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('culture');
+	}},
+	{ code: 'meet-kai', text: 'You watched Kai dance in the street.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('culture');
+	}},
+	{ code: 'meet-luna', text: 'You had a tête-à-tête with Luna.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('culture');
+	}},
+	{ code: 'meet-oliver', text: 'You meet photography enthusiast Oliver.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('culture');
+	}},
+	{ code: 'meet-priya', text: 'You learned about energy efficiency from Priya in the Engine room', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('engine');
+	}},
+	{ code: 'meet-marcus', text: 'You learned about energy efficiency from Priya in the Engine room', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('engine');
+	}},
+	{ code: 'meet-sophia', text: 'You talked about engine upgrades with Sophia.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('engine');
 	}},
 ];
 
@@ -103,4 +139,16 @@ export function triggerAchievement(code) {
 	}
 	// Time passes us all by.
 	window.player.time += 1;
+}
+
+/**
+ * Returns true when the player has gotten that achivement.
+ * @param {string} code 
+ */
+export function gotAchievement(code) {
+	if (player.eventLog.has(code)) {
+		return player.eventLog.get(code).length;
+	} else {
+		return 0;
+	}
 }

@@ -22,6 +22,7 @@ export async function pageDialog(elm, storyURL) {
 		'triggerEvent': (code) => {
 			triggerAchievement(code);
 		},
+		'completedEvent': gotAchievement,
 		'nextPage': (url, args) => {
 			dispose();
 			navigateTo(url, [args]);
