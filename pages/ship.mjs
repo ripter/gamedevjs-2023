@@ -2,8 +2,10 @@ import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { ChoiceHover } from '../components/ChoiceHover.mjs';
-import { clickToYourStats } from '../utils/clickToYourStats.mjs';
-import { clickToShipStats } from '../utils/clickToShipStats.mjs';
+import { navigateTo } from '../utils/navigateTo.mjs';
+import { navigateBack } from '../utils/navigateBack.mjs';
+// import { clickToYourStats } from '../utils/clickToYourStats.mjs';
+// import { clickToShipStats } from '../utils/clickToShipStats.mjs';
 
 
 /**
@@ -14,8 +16,8 @@ export async function pageShip(elm, nextInk) {
 
 	// Add the Stat pages to the skip zone list.
 	const STATIC_OPTIONS = [
-		{ text: 'Your Stats', img: null, nextPage: clickToYourStats('ship/outside.png') },
-		{ text: 'Ship Stats', img: null, nextPage: clickToShipStats() },
+		{ text: 'Your Stats', img: null, nextPage: () => navigateTo('yourStats', ['ship/outside.png']) },
+		{ text: 'Ship Stats', img: null, nextPage: () => navigateTo('shipStats', []) },
 	];
 	
 	// Goto the next page.

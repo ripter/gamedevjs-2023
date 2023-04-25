@@ -2,16 +2,16 @@ import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
-import { clickToGoBack } from '../utils/clickToGoBack.mjs';
 import { formatPropName } from '../utils/formatPropName.mjs';
 import { getSkillDescription } from '../utils/getSkillDescription.mjs';
+import { navigateBack } from '../utils/navigateBack.mjs';
 
 
 
 /**
  * Page to show the user's stats and upgrades.
 */
-export async function pageYourStats(elm, backUrl, background) {
+export async function pageYourStats(elm, background) {
 	const activeIdx = signal(0);
 	let dispose;
 	
@@ -35,11 +35,11 @@ export async function pageYourStats(elm, backUrl, background) {
 		const activeItem = allChoices[activeIdx.value];
 		const playerSkill = player.getSkillValue(activeItem.skill);
 		const skillAdj = getSkillDescription(player[activeItem.skill].value);
-		const events = player[activeItem.skill].events;//.map(getAchievement);
+		const events = player[activeItem.skill].events;
 		
 		elm.style.backgroundImage = `url(./imgs/${background})`;
 		render(elm, html`
-			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: () => {dispose(); clickToGoBack()()}, className: 'btn-back'})}
+			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: () => {dispose(); navigateBack()}, className: 'btn-back'})}
 			<h4>TIME: ${player.time}</h4>
 			<ul class='choice-list'>
 				${leftChoiceList.map(item => ChoiceBasic({item, onClick: handleClick, className: `${item.name === activeItem.name ? '--active' : ''}`}))}

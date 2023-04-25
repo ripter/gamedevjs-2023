@@ -1,20 +1,21 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
-import { clickToGoBack } from '../utils/clickToGoBack.mjs';
-import { getAchievement } from '../const/achievements.mjs';
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
+import { getAchievement } from '../const/achievements.mjs';
+import { navigateBack } from '../utils/navigateBack.mjs';
 
 /**
  * Page to show the Ship stats
 */
 export async function pageShipStats(elm, backUrl) {
 	const activeIdx = signal(0);
+	let dispose;
 	
 	//
 	// Render the page.
 	elm.className = 'page page-ship-stats';
-	effect(() => {
+	dispose = effect(() => {
 		const { ship } = window;
 		const activeItem = allChoices[activeIdx.value];
 		const events = ship[activeItem.system].events.map(getAchievement);
@@ -26,7 +27,7 @@ export async function pageShipStats(elm, backUrl) {
 		
 		elm.style.backgroundImage = `url(./imgs/ship/${activeItem.background})`;
 		render(elm, html`
-			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: clickToGoBack(backUrl), className: 'btn-back'})}
+			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: () => {dispose(); navigateBack()}, className: 'btn-back'})}
 			<dl class="paper">
 				<dt>${activeItem.text}</dt>
 				<dd>${activeItem.description}</dd>
