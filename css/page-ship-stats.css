@@ -1,5 +1,4 @@
 .page-ship-stats {
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
 }

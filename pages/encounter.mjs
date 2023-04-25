@@ -13,7 +13,7 @@ export async function pageEncounter(elm, storyURL) {
 	const state = signal({});
 	//
 	// Load the story
-	const story = await Story.load(storyURL, {
+	const story = await Story.load(`ink/${storyURL}.json`, {
 		// rollDice function. Rolls dice and sets the "time" variable with the result.
 		rollDice: (skillName) => {
 			const skillLevel = window.player.skills[skillName];

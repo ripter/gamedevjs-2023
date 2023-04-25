@@ -21,7 +21,6 @@ As you step into the bustling Central Hub, you marvel at the sheer scale of it a
 
     * Explore the Central Hub and introduce yourself to a stranger.
         -> greet_alex
-        -> END
 
     * Head to the Communication Center and meet the person in charge.
         -> greet_jordan
@@ -46,7 +45,10 @@ Mother: "Oh, dear! What a pleasant surprise! I'm so happy to see you. How have y
 -
 After a heartfelt conversation with your mother, you leave her office feeling reassured and grateful for her love and support. Knowing she's there for you, no matter what challenges you face, fills you with a sense of comfort and determination.
 
-    * [Learn about another area on the ship.]
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+    * {timePlayer < 2} [Learn about another area on the ship.]
         ~ triggerEvent("visit-central-hub-zone")
         ~ nextPage("ship", "dialog-intro")
 -> END
@@ -73,7 +75,10 @@ Alax: "Hey there! I'm glad you made it. This display is one of my favorite spots
 -
 As you continue to chat with Alax, you can't help but feel inspired by their passion for engineering and their appreciation for the beauty of the holographic display. You leave the Central Hub with a newfound appreciation for the blend of art and technology that exists on the ship, as well as a deeper connection with your new friend, Alax.
 
-    * [Learn about another area on the ship.]
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+    * {timePlayer < 2} [Learn about another area on the ship.]
         ~ triggerEvent("meet-alex")
         ~ nextPage("ship", "dialog-intro")
 -> END
@@ -100,7 +105,10 @@ Jordan: "Hello there! It's not often we get visitors in the Communication Center
 -
 Your conversation with Jordan leaves you with a greater understanding of the importance of communication in the vastness of space. As you depart the Communication Center, you appreciate the hard work and dedication of the officers like Jordan who keep the Celestial connected to the rest of the universe.
 
-     * [Learn about another area on the ship.]
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+     * {timePlayer < 2} [Learn about another area on the ship.]
         ~ triggerEvent("meet-jordan")
         ~ nextPage("ship", "dialog-intro")
 -> END

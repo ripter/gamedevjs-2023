@@ -1,4 +1,7 @@
 EXTERNAL rollDice(skillName)
+EXTERNAL triggerEvent(code)
+EXTERNAL nextPage(url, value)
+
 EXTERNAL updateShip(propName, deltaValue)
 EXTERNAL updatePlayer(propName, deltaValue)
 EXTERNAL onGameOver()

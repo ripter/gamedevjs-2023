@@ -19,7 +19,7 @@
 	display: block;
 }
 .encounter #page-encounter {
-	display: block;
+	display: flex;
 }
 .ship #page-ship-zone {
 	display: block;

@@ -24,9 +24,6 @@
 
 .page-dialog .choice-list {
 	width: 100%;
-}
-.page-dialog .choice-list.--count-2, 
-.page-dialog .choice-list.--count-4 {
 	display: block;
 }
 
