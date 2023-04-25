@@ -31,7 +31,7 @@ export async function pageShip(elm, nextInk) {
 		// else, load a dialog page with the ink-zone
 		window.currentPage.value = {
 			url: 'dialog',
-			args: [`ink/${nextInk}-${item.zone}.json`],
+			args: [`${nextInk}-${item.zone}`],
 		};
 	};
 	// Add the mask on over

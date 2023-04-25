@@ -50,7 +50,7 @@ export class Ship {
 			},
 			central: {
 				communication: 0,
-				broadcast: 0,
+				holographic: 0,
 				cockpit: 0,
 			},
 			commercial: {

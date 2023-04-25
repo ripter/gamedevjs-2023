@@ -14,10 +14,6 @@ EXTERNAL nextPage(url, value)
 === start ===
 #background: ship/agricultural_zone.png
 
-timePlayer: {timePlayer}
-timeSinceLastRun: {timeSinceLastRun}
-totalVisits: {totalVisits}
-
 You arrive at the lush Agricultural Zone, a vast area filled with greenery, crops, and plant life that sustains the ship's population. The soft hum of the artificial sunlight panels and the sound of water trickling in the hydroponic systems create a soothing atmosphere.
 
     * [Look at the plants]
@@ -54,8 +50,13 @@ Riley: "Anyway, let me show you around. The Agricultural Zone is not only respon
 
 As you follow Riley, you feel a sense of camaraderie and purpose. With an old friend by your side, you're eager to contribute to the well-being of the Celestial and its inhabitants.
 
-    * [Explore another area.]
-        ~ triggerEvent("meet-riley")
+    ~ triggerEvent("meet-riley")
+
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+   
+    * {timePlayer < 2} [Explore another area.]
         ~ nextPage("ship", "dialog-intro")
         -> END
     
@@ -82,8 +83,13 @@ Morgan: "Alright then, let's see what you've got. I'll be keeping an eye on you,
 
 As Morgan walks away, you feel a mix of excitement and determination. While your past rivalry may linger, you're committed to proving yourself and making a positive impact in the Agricultural Zone and on the Celestial as a whole.
 
-    * [Learn about a different part of the Ship.]
-        ~ triggerEvent("meet-morgan")
+     ~ triggerEvent("meet-morgan")
+     
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+   
+    * {timePlayer < 2} [Learn about a different part of the Ship.]
         ~ nextPage("ship", "dialog-intro")
         -> END
 
@@ -112,7 +118,11 @@ Riley: "Once you've finished up here, come find me, and we can catch up. It's gr
 
 As Riley walks away, you feel motivated by their playful encouragement. Your diligence and enthusiasm are bound to make a positive impact on the Agricultural Zone and the Celestial as a whole.
 
-    * [Look for more friends around the ship.]
-        ~ triggerEvent("meet-riley-flirty")
+    ~ triggerEvent("meet-riley-flirty")
+     
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+    * {timePlayer < 2} [Look for more friends around the ship.]
         ~ nextPage("ship", "dialog-intro")
         -> END

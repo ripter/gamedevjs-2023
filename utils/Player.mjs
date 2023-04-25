@@ -27,13 +27,16 @@ export class Player {
 			'economics',	
 			'management',	
 		];
-
+		// pre-fill all the skill values.
 		this.skills.forEach(skill => {
 			this[skill] = {
 				value: 1,
 				events: [],
 			};
 		});
+		
+		// Keep a log of all events that have happened.
+		this.eventLog = new Map();
 
 		// Events are things that has happend to the Player over the course of the game
 		this.healthcare.events = [

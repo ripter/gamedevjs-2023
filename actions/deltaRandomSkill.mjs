@@ -1,3 +1,4 @@
+import { formatPropName } from '../utils/formatPropName.mjs';
 
 /**
  * Updates a random Player Skill by deltaValue and logs the event.
@@ -7,6 +8,13 @@
 export function deltaRandomSkill(eventMsg, deltaValue) {
   const { player } = window;
   const skill = player.getRandomSkill();
-  player[skill].value += deltaValue;;
-  player[skill].events.push(eventMsg);
+  let postFix = formatPropName(skill);
+  if (deltaValue > 0) {
+    postFix += ` +${deltaValue}`;
+  } else {
+    postFix += `${deltaValue}`;
+  }
+  console.log('deltaValue', deltaValue, eventMsg, postFix);
+  player[skill].value += deltaValue;
+  player[skill].events.push(`${eventMsg} [${postFix}]`);
 }

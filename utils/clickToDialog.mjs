@@ -5,7 +5,7 @@ export function clickToDialog(inkName) {
 	return () => {
 		window.currentPage.value = {
 			url: 'dialog',
-			args: [`ink/${inkName}.json`],
+			args: [inkName],
 		};
 	};
 }

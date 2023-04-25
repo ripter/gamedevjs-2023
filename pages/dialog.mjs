@@ -17,13 +17,12 @@ export async function pageDialog(elm, storyURL) {
 	
 	//
 	// Load the story
-	const story = await Story.load(storyURL, {
+	const story = await Story.load(`ink/${storyURL}.json`, {
 		'triggerEvent': (code) => {
 			triggerAchievement(code);
 		},
 		'nextPage': (url, arg) => {
-			console.log(`Dialog moving to next page "${url}`);
-			dispose();
+			// dispose();
 			window.currentPage.value = {
 				url,
 				args: [arg],

@@ -30,7 +30,6 @@ const currentPage = window.currentPage = signal({
 // Handle Page "routes"
 effect(() => {
 	const {url, args} = currentPage.value;
-	console.log('LoadingURL', url, args);
 	const elm = document.querySelector('#gamearea');
 	// Set the page class on the root to show/hide the correct page.
 	elm.className = url;
@@ -39,12 +38,10 @@ effect(() => {
 	setTimeout(() => {
 		switch(url) {
 			case 'dialog':
-				console.log('loading dialog page');
 				return pageDialog(document.getElementById('page-dialog'), ...args);
 			case 'encounter': 
 				return pageEncounter(document.getElementById('page-encounter'), ...args);
 			case 'ship':
-				console.log('loading ship page');
 				return pageShip(document.getElementById('page-ship-zone'), ...args);
 			case 'yourStats':
 				return pageYourStats(document.getElementById('page-your-status'), ...args);
