@@ -67,6 +67,11 @@ export const ACHIEVEMENTS = [
 		logEvent(eventMsg, window.player, 'social');
 		disableZone('commercial');
 	}},
+	{ code: 'asteroid', text: 'You Played the Asteroid Event.', action: (eventMsg) => {
+		// Give a bonus skill for their next play.
+		// This is ok because only th astroid encounter exists in the game, so it's just to show what could have been.
+		deltaRandomSkill(eventMsg, 1);
+	}},
 ];
 
 /**

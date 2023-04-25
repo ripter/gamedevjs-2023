@@ -50,8 +50,15 @@ export class Player {
 	 * @returns {string} "n/10"
 	 */
 	getSkillValue(skillName) {
-		const { value = 0 } = this[skillName];
-		return `${value}/10`;
+		return `${this.getSkillNumber(skillName)}/10`;
+	}
+	/**
+	 * Returns the number value of the skill.
+	 * @param {string} skillName 
+	 * @returns {number}
+	 */
+	getSkillNumber(skillName) {
+		return this[skillName].value;
 	}
 
 	getRandomSkill() {

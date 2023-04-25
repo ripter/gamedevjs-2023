@@ -2,10 +2,6 @@ EXTERNAL rollDice(skillName)
 EXTERNAL triggerEvent(code)
 EXTERNAL nextPage(url, value)
 
-EXTERNAL updateShip(propName, deltaValue)
-EXTERNAL updatePlayer(propName, deltaValue)
-EXTERNAL onGameOver()
-
 VAR time = -1
 VAR largeRocks = 0
 VAR criticalRisk = 0
@@ -173,5 +169,5 @@ You attempt to repair the damage.
 }
 
 + Return
-    ~ onGameOver()
+    ~ nextPage("dialog", "dialog-day-two")
 -> END

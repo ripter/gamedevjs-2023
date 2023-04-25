@@ -18,10 +18,13 @@ Thanks for Playing! I'm sorry to say that I ran out of time, so there is no more
 
 If you enjoyed this, please leave some encouraging feedback in the comments. It will help motivate me to complete the game. Otherwise it will end up like all my past games, unfinished.
 
-    * [Play Astroid Encounter]
+    + [Play Astroid Encounter]
         -> play_astroid_encounter
         
-    * [What was planned?]
+    + [Player Stats]
+        ~ nextPage("yourStats", "bedroom_child.png")
+        -> END
+    + [What was planned?]
         -> planned_features
 
 
@@ -33,7 +36,8 @@ The Player has 10 skills that can be improved though gameplay. When an event occ
 
 Getting a perfect ending in an event results in awards. Otherwise it results in some damage to the ship. THe better you play, the less damage. This damage effects the story and future options.
 
-    * [Launch Encounter]
+    * [Launch Encounter {timeSinceLastRun > 0: Again}]
+        ~ triggerEvent("asteroid")
         ~ nextPage("encounter", "encounter-astroid")
         -> END
     * [Back]
@@ -42,11 +46,11 @@ Getting a perfect ending in an event results in awards. Otherwise it results in 
 
 
 === planned_features ===
-The gameflow would switch between Dialogs and Events. 
+The game alternates between engaging Dialogs and thrilling Events to create a dynamic gameplay experience.
 
-The Dialogs provide story that changes based on the path you've taken so far. Each story can read the list of events that has happened to you. This is where the player can explore, gain skill levels, and unlock new story paths.
+Dialogs offer a branching narrative that adapts to the choices you've made throughout the game. These storylines draw from a record of events the player has experienced, allowing for unique, personalized narratives. As you explore, you can enhance your skills and unlock new story paths, making every playthrough feel fresh and exciting.
 
-The Events provide the "gameplay" loop. It features a challenge that requires one of the player's skills to complete. The player must use a limited amount of time to prevent damage to the ship. The player is then rewarded or punished based on performance.
+Events, on the other hand, provide the core "gameplay" loop. Each encounter, crafted using the Ink engine, presents a self-contained challenge that demands the player's skills to overcome. With a limited amount of time, you must protect the ship from damage and maintain its integrity. Your performance in these events ultimately determines the rewards or penalties you face, directly influencing the progression of the game and its unfolding story.
 
     + [Planned Static Events]
         -> static_events
@@ -101,7 +105,7 @@ These are the Static Events that would have happened regardless of your choices 
         -> planned_features
         
 === dynamic_events ===
-    Dynamic Events are chance events. The might or might happen during different parts of the game. 
+    Dynamic Events are chance events. The might or might happen during different parts of the game.
     
     Is started this game jam by creating the Astroid Event first. I spent several days playing around with the mechanics of the event, how the dice are used, the player's options, and other details
     

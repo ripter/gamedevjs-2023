@@ -4,6 +4,7 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 import { Story } from '../utils/Story.mjs';
 import { rollDice } from '../utils/rollDice.mjs';
 import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
+import { navigateTo } from '../utils/navigateTo.mjs';
 
 /**
  * Page for Encounters.
@@ -11,28 +12,23 @@ import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
 */
 export async function pageEncounter(elm, storyURL) {
 	const state = signal({});
+	let dispose;
 	//
 	// Load the story
 	const story = await Story.load(`ink/${storyURL}.json`, {
 		// rollDice function. Rolls dice and sets the "time" variable with the result.
 		rollDice: (skillName) => {
-			const skillLevel = window.player.skills[skillName];
+			const skillLevel = window.player.getSkillNumber(skillName);
 			const diceResults = rollDice(skillLevel);
+			console.log('diceResults', diceResults);
 			story.setVariable('time',  diceResults.reduce((acc, value) => {return acc + value;}, 0));
 		},	
-		// Updates the Ship
-		updateShip: (propName, deltaValue) => {
-			console.log('Change Ship', propName, 'by', deltaValue);
-			return 'Ok damage the {freakin|strange|large} ship.';	
-		},	
-		// Updates the Player
-		updatePlayer:	(propName, deltaValue) => {
-			console.log('Change Player', propName, 'by', deltaValue);
-			return 'Ok damage the {amazing|cool|awesome} player.';	
+		'triggerEvent': (code) => {
+			triggerAchievement(code);
 		},
-		// Called when the Encounter is over.
-		onGameOver: () => {
-			console.log('onGameOver');
+		'nextPage': (url, args) => {
+			dispose();
+			navigateTo(url, [args]);
 		},
 	});
 	
@@ -42,7 +38,7 @@ export async function pageEncounter(elm, storyURL) {
 	//
 	// Render the page.
 	elm.className = 'page page-encounter';
-	effect(() => {
+	dispose = effect(() => {
 		const { tags, body, choiceList } = state.value;
 		const { choiceType, background, title } = tags;
 		const Choice = getChoiceComponent(choiceType);
