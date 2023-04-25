@@ -1,8 +1,4 @@
-/* Display is used to hide "inactive" pages.
- * So only change it when it's the active page.
- */
-.yourStats #page-your-status {
-	display: flex;
+#page-your-status {
 	align-items: flex-end;	
 	justify-content: space-between;
 }

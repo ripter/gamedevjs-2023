@@ -34,7 +34,6 @@ export const ACHIEVEMENTS = [
 		disableZone('agricultural');
 	}},
 	{ code: 'meet-alex', text: 'You meet Alex at the holographic display in the Central Hub.', action: (eventMsg) => {
-		console.log('meet-alex event')
 		logEvent(eventMsg, window.player, 'social');
 		disableZone('central');
 	}},

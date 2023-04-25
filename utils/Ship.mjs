@@ -20,14 +20,17 @@ export class Ship {
 		this.criticalSystems.forEach(name => {
 			this[name] = {
 				value: 100,
-				events: new Set(['maintenance-perfect']),
+				events: ['maintenance-perfect'],
 			};
 		});
 		// Population is also a stat
 		this.population = {
 			value: 1_000_500,
-			envents: new Set(),
+			envents: [],
 		};
+		// Keep a log of all events that have happened.
+		this.eventLog = new Map();
+
 		// Zones are locations on the ship.
 		this.zones = [
 			{ text: 'Agricultural Zone', img: '../imgs/ship/agricultural.png', zone: 'agricultural', isDisabled: false },
