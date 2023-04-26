@@ -14,7 +14,6 @@ export function deltaRandomSkill(eventMsg, deltaValue) {
   } else {
     postFix += `${deltaValue}`;
   }
-  console.log('deltaValue', deltaValue, eventMsg, postFix);
   player[skill].value += deltaValue;
   player[skill].events.push(`${eventMsg} [${postFix}]`);
 }

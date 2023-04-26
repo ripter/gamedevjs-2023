@@ -160,7 +160,6 @@ export function getAchievement(code) {
 export function triggerAchievement(code) {
 	const { player } = window;
 	const event = getAchievement(code);
-	console.log('Trigger Event', event);
 	if (!event) {
 		throw new Error(`Could not find an achievement for the code "${code}"`);
 	}

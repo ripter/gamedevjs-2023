@@ -4,7 +4,6 @@
  */
 export function clickToGoBack() {
 	const currentPage = window.currentPage.value;
-	console.log('clickToGoBack', currentPage);
 	return () => {
 		window.currentPage.value = {
 			url: currentPage.lastUrl,

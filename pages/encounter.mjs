@@ -20,7 +20,6 @@ export async function pageEncounter(elm, storyURL) {
 		rollDice: (skillName) => {
 			const skillLevel = window.player.getSkillNumber(skillName);
 			const diceResults = rollDice(skillLevel);
-			console.log('diceResults', diceResults);
 			story.setVariable('time',  diceResults.reduce((acc, value) => {return acc + value;}, 0));
 		},	
 		'triggerEvent': (code) => {
