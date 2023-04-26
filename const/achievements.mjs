@@ -50,6 +50,8 @@ export const ACHIEVEMENTS = [
 		disableZone('central');
 	}},
 	{ code: 'visit-central-hub-zone', action: () => disableZone('central')},
+	{ code: 'visit-research-zone', action: () => disableZone('research')},
+	{ code: 'visit-residential-zone', action: () => disableZone('residential')},
 	{ code: 'meet-mia', text: 'You had a lovely conversation with a cheerful barista named Mia.', action: (eventMsg) => {
 		logEvent(eventMsg, window.player, 'social');
 		disableZone('commercial');

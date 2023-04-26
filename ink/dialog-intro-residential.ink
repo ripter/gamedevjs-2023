@@ -29,5 +29,15 @@ As you enter the Residential Districts, you're surrounded by the comfortable and
 -
 The Residential Districts offer a sense of belonging and warmth, providing a nurturing environment for the people living on the Celestial as they navigate their lives in the vast expanse of space.
 
+    ~ triggerEvent("visit-residential-zone")
 
--> END
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+
+    * {timePlayer < 2} [Reluctantly go learn about another area.]
+        ~ nextPage("ship", "dialog-intro")
+        -> END
+        
+        
+

@@ -30,5 +30,12 @@ You enter the Research Complex, a district filled with state-of-the-art laborato
 -
 The Research Complex is an exciting and dynamic place where innovation and creativity drive the Celestial's progress, shaping its future in the vast reaches of space.
 
+    ~ triggerEvent("visit-research-zone")
 
--> END
+    * {timePlayer >= 2} [It's been a long day, time to go home.]
+        ~ nextPage("dialog", "dialog-day-two")
+        -> END
+
+    * {timePlayer < 2} [Reluctantly go learn about another area.]
+        ~ nextPage("ship", "dialog-intro")
+        -> END
