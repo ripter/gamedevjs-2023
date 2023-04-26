@@ -36,3 +36,13 @@ npm run test
 ```
 
 These commands will help ensure that the code is of high quality and meets the requirements of the jam.
+
+
+# Music Provided By:
+
+```
+Song: Nuclear Wave - Arcade Machine
+Music provided by Tunetank.
+Free Download: https://tunetank.com/track/5395-arcade-machine/
+```
+
