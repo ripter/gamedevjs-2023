@@ -62,6 +62,6 @@ export class Player {
 	}
 
 	getRandomSkill() {
-  	return getRandomItemFromArray(this.skills);
+		return getRandomItemFromArray(this.skills);
 	}
 }

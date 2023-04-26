@@ -8,7 +8,7 @@ import { navigateBack } from '../utils/navigateBack.mjs';
 /**
  * Page to show the Ship stats
 */
-export async function pageShipStats(elm, backUrl) {
+export async function pageShipStats(elm) {
 	const activeIdx = signal(0);
 	let dispose;
 	
@@ -27,7 +27,7 @@ export async function pageShipStats(elm, backUrl) {
 		
 		elm.style.backgroundImage = `url(./imgs/ship/${activeItem.background})`;
 		render(elm, html`
-			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: () => {dispose(); navigateBack()}, className: 'btn-back'})}
+			${ChoiceBasic({item: {text: 'Back', name: 'back'}, onClick: () => {dispose(); navigateBack();}, className: 'btn-back'})}
 			<dl class="paper">
 				<dt>${activeItem.text}</dt>
 				<dd>${activeItem.description}</dd>

@@ -3,9 +3,6 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { ChoiceHover } from '../components/ChoiceHover.mjs';
 import { navigateTo } from '../utils/navigateTo.mjs';
-import { navigateBack } from '../utils/navigateBack.mjs';
-// import { clickToYourStats } from '../utils/clickToYourStats.mjs';
-// import { clickToShipStats } from '../utils/clickToShipStats.mjs';
 
 
 /**

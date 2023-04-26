@@ -1,10 +1,11 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
-import { Story } from '../utils/Story.mjs';
-import { rollDice } from '../utils/rollDice.mjs';
 import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
 import { navigateTo } from '../utils/navigateTo.mjs';
+import { rollDice } from '../utils/rollDice.mjs';
+import { Story } from '../utils/Story.mjs';
+import { triggerAchievement } from '../const/achievements.mjs';
 
 /**
  * Page for Encounters.

@@ -17,7 +17,7 @@ export const ACHIEVEMENTS = [
 		window.player.time -= 1;
 	}},
 	{ code: 'thank-no-one', text: 'You gave no thanks on your 18th birthday.', action: (eventMsg) => {
-		deltaRandomSkill(eventMsg, 1)
+		deltaRandomSkill(eventMsg, 1);
 		// unto the turn add
 		window.player.time -= 1;
 	}},
@@ -180,6 +180,7 @@ export function triggerAchievement(code) {
  * @param {string} code 
  */
 export function gotAchievement(code) {
+	const { player } = window;
 	if (player.eventLog.has(code)) {
 		return player.eventLog.get(code).length;
 	} else {
