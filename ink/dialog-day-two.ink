@@ -17,14 +17,20 @@ EXTERNAL completedEvent(code)
 
 Thanks for Playing! I'm sorry to say that I ran out of time, so there is no more content. I had big plans, but TIME was not my friend. 
 
+The real "gameplay" is in the Encounter. I ran out of time before I could intergrate it with the story.
+
+A log of your choices this playthough can be seen in the player status page.
+
 If you enjoyed this, please leave some encouraging feedback in the comments. It will help motivate me to complete the game. Otherwise it will end up like all my past games, unfinished.
+
 
     + [Play Astroid Encounter]
         -> play_astroid_encounter
         
-    + [Player Stats]
+    + [See Your Stats and Event Logs]
         ~ nextPage("yourStats", "bedroom_child.png")
         -> END
+    
     + [What was planned?]
         -> planned_features
 
