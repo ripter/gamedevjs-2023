@@ -1,5 +1,7 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 
+import { navigateTo } from '../utils/navigateTo.mjs';
+
 /**
  * Page that shows the Title Screen.
 */
@@ -13,7 +15,8 @@ export function pageTitleScreen(elm, onClick) {
 			<h3>By <a href="https://github.com/ripter/gamedevjs-2023">ripter</a></h3>
 		</header>
 		<footer>
-			<button type="button" @click=${() => onClick()}>Start Game</button>	
+			<div><button type="button" @click=${() => onClick()}>Start Game</button></div>	
+			<div><button type="button" @click=${() => navigateTo('encounter', ['encounter-astroid'])}>Play Astroid Encounter</button></div>
 		</footer>
 	`);	
 }

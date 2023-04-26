@@ -12,6 +12,7 @@ import { triggerAchievement } from '../const/achievements.mjs';
  * Encounters serve as the central gameplay mechanism, providing players with an engaging challenge that tests their abilities, strategies, and luck, and ultimately determines their success or failure in the game.
 */
 export async function pageEncounter(elm, storyURL) {
+	console.log('storyURL', storyURL);
 	const state = signal({});
 	let dispose;
 	//
@@ -22,6 +23,8 @@ export async function pageEncounter(elm, storyURL) {
 			const skillLevel = window.player.getSkillNumber(skillName);
 			const diceResults = rollDice(skillLevel);
 			story.setVariable('time',  diceResults.reduce((acc, value) => {return acc + value;}, 0));
+			console.log('rollDive', skillName, diceResults)
+			return diceResults.join(', ');
 		},	
 		'triggerEvent': (code) => {
 			triggerAchievement(code);
@@ -29,6 +32,9 @@ export async function pageEncounter(elm, storyURL) {
 		'nextPage': (url, args) => {
 			dispose();
 			navigateTo(url, [args]);
+		},
+		'getSkillValue': (skillName) => {
+			return window.player.getSkillNumber(skillName);
 		},
 	});
 	

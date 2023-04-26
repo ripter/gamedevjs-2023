@@ -16,10 +16,12 @@
 
 .page-title footer {
 	position: absolute;
-	bottom: 4em;
+	bottom: 0;
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 
 .page-title footer button {
@@ -31,6 +33,7 @@
 	border: none;
 	padding: 0.5em 1em;
 	font-family: ChivoMono;
+	margin: 1em 0;
 }
 .page-title footer button:active {
 	background-color: #001f3f;
