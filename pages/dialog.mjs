@@ -4,7 +4,7 @@ import { signal, effect } from '../libs/usignal.0.9.0.js';
 import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
 import { navigateTo } from '../utils/navigateTo.mjs';
 import { Story } from '../utils/Story.mjs';
-import { triggerAchievement } from '../const/achievements.mjs';
+import { triggerAchievement, gotAchievement } from '../const/achievements.mjs';
 
 
 const visitLog = new Map();

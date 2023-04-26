@@ -108,6 +108,38 @@ export const ACHIEVEMENTS = [
 		logEvent(eventMsg, window.player, 'social');
 		disableZone('engine');
 	}},
+	{ code: 'meet-lila', text: 'You meet the nurse Lila.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('medical');
+	}},
+	{ code: 'meet-ravi', text: 'You worked out with Ravi.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('medical');
+	}},
+	{ code: 'meet-greg', text: 'You meet the humble guardian grand manufacturing facility.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('industrial');
+	}},
+	{ code: 'meet-lena', text: 'You meet master craftswoman of the Celestial, Lena.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('industrial');
+	}},
+	{ code: 'meet-elara', text: 'Elara, a dedicated keeper of the Celestial\'s inner workings.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('industrial');
+	}},	
+	{ code: 'meet-julia', text: 'You meet the astronomer Julia.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('decks');
+	}},
+	{ code: 'meet-samantha', text: 'You meet a cute pilot named Samanth.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('decks');
+	}},
+	{ code: 'meet-elisa', text: 'You spacewalked with Elisa.', action: (eventMsg) => {
+		logEvent(eventMsg, window.player, 'social');
+		disableZone('decks');
+	}},
 ];
 
 /**
@@ -126,6 +158,7 @@ export function getAchievement(code) {
 export function triggerAchievement(code) {
 	const { player } = window;
 	const event = getAchievement(code);
+	console.log('Trigger Event', event);
 	if (!event) {
 		throw new Error(`Could not find an achievement for the code "${code}"`);
 	}
