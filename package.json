@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "lint": "eslint **/*.mjs"
+    "lint": "eslint **/*.mjs",
+    "server": "python3 -m http.server 8000"
   },
   "author": "ripter",
   "license": "ISC",

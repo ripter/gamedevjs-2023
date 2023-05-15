@@ -1,15 +1,15 @@
-import { signal, computed, effect } from '../libs/usignal.0.9.0.js';
+import { signal, effect } from './libs/usignal.0.9.0.js';
 
-import { pageTitleScreen } from '../pages/titleScreen.mjs';
-import { pageEncounter } from '../pages/encounter.mjs';
-import { pageDialog } from '../pages/dialog.mjs';
-import { pageShip } from '../pages/ship.mjs';
-import { pageYourStats } from '../pages/yourStats.mjs';
-import { pageShipStats } from '../pages/shipStats.mjs';
+import { pageTitleScreen } from './pages/titleScreen.mjs';
+import { pageEncounter } from './pages/encounter.mjs';
+import { pageDialog } from './pages/dialog.mjs';
+import { pageShip } from './pages/ship.mjs';
+import { pageYourStats } from './pages/yourStats.mjs';
+import { pageShipStats } from './pages/shipStats.mjs';
 
-import { clickToDialog } from '../utils/clickToDialog.mjs';
-import { Player } from '../utils/Player.mjs';
-import { Ship } from '../utils/Ship.mjs';
+import { clickToDialog } from './utils/clickToDialog.mjs';
+import { Player } from './utils/Player.mjs';
+import { Ship } from './utils/Ship.mjs';
 
 // Create a new Player.
 // Put it on window so everyone can use it.
