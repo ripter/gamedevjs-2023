@@ -5,7 +5,7 @@ import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
 import { navigateTo } from '../utils/navigateTo.mjs';
 import { rollDice } from '../utils/rollDice.mjs';
 import { Story } from '../utils/Story.mjs';
-import { triggerAchievement } from '../const/achievements.mjs';
+import { triggerAchievement } from '../const/events.mjs';
 
 /**
  * Page for Encounters.

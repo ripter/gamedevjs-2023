@@ -2,7 +2,23 @@ import { deltaRandomSkill } from '../actions/deltaRandomSkill.mjs';
 import { disableZone } from '../actions/disableZone.mjs';
 import { logEvent } from '../actions/logEvent.mjs';
 
-export const ACHIEVEMENTS = [
+/**
+ * Global Events that happen to the Ship/Story.
+ * Character Events are added to this list during runtime.
+ */
+export const EVENTS = [
+	{ code: 'earth_signals_about_radiation', 
+		text: 'Earth detects a river of Radiation that will hit the ship in the year 327.', 
+		when: 0.21162279808283918, // {year: 106, month: 7, day: 13}
+		actions: [],
+	},
+	{ code: 'radiation_hits_ship',
+		text: 'A large river of radiation bathes the entire ship for days.',
+		when: 327.7230, // {year: 327, month: 8, day: 21}
+		actions: [],
+	},
+
+	// JAM Events.
 	{ code: 'born', text: 'You where born! +1 all skills.' },
 	{ code: 'astroid-perfect', text: 'You saved the ship from the astroid attack! There was no damage at all! "Mother" says your piloting skills have gone up!' },
 	{ code: 'maintenance-perfect', text: 'Ship Maintenance - Everything is perfect.' },
@@ -150,7 +166,7 @@ export const ACHIEVEMENTS = [
  * @returns {text: string}
  */
 export function getAchievement(code) {
-	return ACHIEVEMENTS.find(item => item.code === code);
+	return EVENTS.find(item => item.code === code);
 }
 
 /**

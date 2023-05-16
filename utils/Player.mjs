@@ -1,5 +1,5 @@
 import { getRandomItemFromArray } from '../utils/getRandomItemFromArray.mjs';
-import { getAchievement } from '../const/achievements.mjs';
+import { getAchievement } from '../const/events.mjs';
 
 /**
  * Holds all of the Player data.

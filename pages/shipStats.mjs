@@ -2,7 +2,7 @@ import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
 import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
-import { getAchievement } from '../const/achievements.mjs';
+import { getAchievement } from '../const/events.mjs';
 import { navigateBack } from '../utils/navigateBack.mjs';
 
 /**

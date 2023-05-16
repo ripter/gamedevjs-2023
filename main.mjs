@@ -1,5 +1,15 @@
 import { signal, effect } from './libs/usignal.0.9.0.js';
 
+import { initGameState } from './state/index.mjs';
+
+const gameState = initGameState();
+console.log('Game State', gameState);
+window.gameState = gameState;
+
+
+
+
+// Jam Entry below!
 import { pageTitleScreen } from './pages/titleScreen.mjs';
 import { pageEncounter } from './pages/encounter.mjs';
 import { pageDialog } from './pages/dialog.mjs';
