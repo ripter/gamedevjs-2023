@@ -5,6 +5,8 @@
 @import "story.css";
 @import "utils.css";
 /* Component Styles */
+@import "components/message.css";
+@import "components/message-basic.css";
 @import "choice.css";
 @import "choice-list.css";
 @import "choice-skill-check.css";

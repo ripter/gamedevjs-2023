@@ -1,10 +1,7 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
-import { getChoiceComponent } from '../utils/getChoiceComponent.mjs';
-import { navigateTo } from '../utils/navigateTo.mjs';
-import { Story } from '../utils/Story.mjs';
-import { triggerAchievement, gotAchievement } from '../const/events.mjs';
+import { MessageBasic } from '../components/MessageBasic.mjs';
 
 
 /**
@@ -14,8 +11,6 @@ export async function pageStory(elm, storyURL) {
 	console.log('pageStory', arguments);
 	const backgroundImage = signal('imgs/ship.png');
 	const npcLeftImage = signal('chars/lily/imgs/mixer.png');
-	// const state = signal({});
-	// const visitTimes = visitLog.has(storyURL) ? visitLog.get(storyURL) : [];
 	let dispose;
 	
 	// //
@@ -64,7 +59,7 @@ export async function pageStory(elm, storyURL) {
 				<img src=${backgroundImage.value} alt="Background Image">
 			</div>
 			<div class="story">
-				<p>Story goes here</p>
+				${MessageBasic({text: 'Test1', avatarURL: '../chars/lily/imgs/portrait.png'})}	
 			</div>
 			<div class="options">
 				<button>Option 1</button>
