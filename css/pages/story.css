@@ -1,0 +1,52 @@
+
+body {
+  background-color: red;
+}
+
+.page-story {
+  position: relative;
+  height: 100%;
+  background-color: #000;
+  overflow: auto;
+  padding: 2em;
+  box-sizing: border-box;
+}
+
+.page-story .background img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.page-story .story {
+  color: #fff;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.page-story .options button {
+  display: block;
+  margin-bottom: 1em;
+  padding: 1em;
+  font-size: 1em;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+}
+
+.page-story .npc img {
+  max-width: 100%;
+  margin-top: 1em;
+}
+
+@media (min-width: 768px) {
+  .page-story .story, .options, .npc {
+      max-width: 75%;
+      margin: 0 auto;
+  }
+}

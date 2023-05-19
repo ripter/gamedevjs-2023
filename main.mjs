@@ -1,14 +1,24 @@
 import { signal, effect } from './libs/usignal.0.9.0.js';
 
+// Load State
 import { initGameState } from './state/index.mjs';
+
+// Load Pages.
+import { pageStory } from './pages/story.mjs';
+
+// Load the Router!
+import { router } from './router/index.mjs';
 
 const gameState = initGameState();
 console.log('Game State', gameState);
 window.gameState = gameState;
 
+// Start the Router
+router();
 
 
 
+/*
 // Jam Entry below!
 import { pageTitleScreen } from './pages/titleScreen.mjs';
 import { pageEncounter } from './pages/encounter.mjs';
@@ -62,7 +72,7 @@ effect(() => {
 		}	
 	}, 1);
 });
-
+*/
 
 
 
