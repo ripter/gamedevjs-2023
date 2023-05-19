@@ -1,5 +1,8 @@
 import { signal, effect } from './libs/usignal.0.9.0.js';
 
+// Load Browser stuff
+import './utils/responsiveShortcut.mjs';
+
 // Load State
 import { initGameState } from './state/index.mjs';
 

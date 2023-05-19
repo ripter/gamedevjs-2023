@@ -1,21 +1,20 @@
-
-body {
-  background-color: red;
-}
-
 .page-story {
   position: relative;
   height: 100%;
-  background-color: #000;
-  overflow: auto;
   padding: 2em;
   box-sizing: border-box;
 }
 
-.page-story .background img {
+.page-story .background {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.page-story .background img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -28,25 +27,38 @@ body {
   margin-bottom: 1em;
 }
 
+.page-story .options {
+  text-align: center;
+  margin-top: 2em;
+}
+
 .page-story .options button {
-  display: block;
-  margin-bottom: 1em;
-  padding: 1em;
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0.5em 1em;
   font-size: 1em;
   background-color: #fff;
   color: #000;
   border: none;
   border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
+
+.page-story .npc {
+  text-align: center;
+  margin-top: 2em;
 }
 
 .page-story .npc img {
-  max-width: 100%;
-  margin-top: 1em;
+  max-width: 50%;
+  height: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 @media (min-width: 768px) {
-  .page-story .story, .options, .npc {
-      max-width: 75%;
-      margin: 0 auto;
-  }
+  /* .page-story {
+    max-width: 75%;
+    margin: 0 auto;
+  } */
 }

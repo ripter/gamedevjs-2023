@@ -29,9 +29,9 @@ body {
 }
 
 #gamearea {
-	position: relative;
+	/* position: relative;
 	width: var(--size-game-width);
 	height: var(--size-game-height);	
 	background-color: white;
-	border: thin solid #111;
+	border: thin solid #111; */
 }
