@@ -12,6 +12,7 @@ export class Story {
 	
 	/**
 	 * Loads an Ink Story by URL
+	 * Binds JS functions to the Story so they can be called from inside the INK story.
  	*/
 	static async load(url, boundFunctions) {
 		const story = new Story();	

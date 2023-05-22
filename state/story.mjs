@@ -4,6 +4,6 @@
  */
 export class Story {
   constructor() {
-
+    this.inkURL = null;
   }
 }

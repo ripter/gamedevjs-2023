@@ -1,8 +1,24 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
+import { Story } from '../utils/Story.mjs';
 import { MessageBasic } from '../components/MessageBasic.mjs';
 
+
+const { state, dispatch } = window.gameState;
+console.log('load story from state', state);
+
+const storyURL = 'chars/susan/story.json';
+
+//
+// Load the story and setup external functions
+const story = await Story.load(storyURL, {
+	'triggerEvent': (code) => {
+		triggerAchievement(code);
+	},
+});
+window.story = story;
+console.log('story', story);
 
 /**
  * Page that renders Ink Stories.
@@ -10,21 +26,9 @@ import { MessageBasic } from '../components/MessageBasic.mjs';
 export async function pageStory(elm, storyURL) {
 	console.log('pageStory', arguments);
 	const backgroundImage = signal('imgs/ship.png');
-	const npcLeftImage = signal('chars/lily/imgs/mixer.png');
+	// const npcLeftImage = signal('chars/lily/imgs/mixer.png');
 	let dispose;
 	
-	// //
-	// // Load the story
-	// const story = await Story.load(`ink/${storyURL}.json`, {
-	// 	'triggerEvent': (code) => {
-	// 		triggerAchievement(code);
-	// 	},
-	// 	'completedEvent': gotAchievement,
-	// 	'nextPage': (url, args) => {
-	// 		dispose();
-	// 		navigateTo(url, [args]);
-	// 	},
-	// });
 
 	// //Set the global vars
 	// story.setVariable('timePlayer', window.player.time);
@@ -65,9 +69,6 @@ export async function pageStory(elm, storyURL) {
 				<button>Option 1</button>
 				<button>Option 2</button>
 				<!-- Add more buttons for more options -->
-			</div>
-			<div class="npc">
-				<img src=${npcLeftImage.value} alt="NPC Image">
 			</div>
 		</div>
 		`);	

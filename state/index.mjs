@@ -1,14 +1,12 @@
 import { Ship } from './ship.mjs';
-
+import { Story } from './story.mjs';
 
 export function initGameState() {
-  const shipState = new Ship();
-  // for debugging
-  window.ship = shipState;
 
   return {
     state: {
-      ship: shipState,
+      ship: new Ship(),
+      story: new Story(),
     },
     dispatch: () => console.log('Add Dispatch'),
   }

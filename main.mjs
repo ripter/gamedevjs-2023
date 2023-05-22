@@ -1,23 +1,31 @@
-import { signal, effect } from './libs/usignal.0.9.0.js';
+// import { signal, effect } from './libs/usignal.0.9.0.js';
 
 // Load Browser stuff
-import './utils/responsiveShortcut.mjs';
+// import './utils/responsiveShortcut.mjs';
 
 // Load State
 import { initGameState } from './state/index.mjs';
 
 // Load Pages.
-import { pageStory } from './pages/story.mjs';
+// import { pageStory } from './pages/story.mjs';
 
 // Load the Router!
-import { router } from './router/index.mjs';
+// import { router } from './router/index.mjs';
 
 const gameState = initGameState();
 console.log('Game State', gameState);
 window.gameState = gameState;
 
+// Attempt to resume existing game state.
+// let localState = localStorage.getItem('gameState');
+// console.log('local state', localState);
+// if (!localState) {
+// 	console.log('Updating Local Storage');
+// 	localStorage.setItem('gameState', JSON.stringify(gameState))
+// }
+
 // Start the Router
-router();
+// router();
 
 
 
