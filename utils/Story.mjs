@@ -1,5 +1,5 @@
 import { loadStory } from '../utils/loadStory.mjs';
-import { parseTags } from '../utils/parseTags.mjs';
+import { parseTags } from '../story/parseTags.mjs';
 
 /**
  * Wrapper around the Ink Story
