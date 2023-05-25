@@ -1,15 +1,17 @@
 import { render, html } from '../libs/uhtml/index.mjs';
 import { signal, effect } from '../libs/usignal.0.9.0.js';
 
+import { hadEvent } from '../events/hadEvent.mjs';
+import { triggerEvent } from '../events/triggerEvent.mjs';
 import { loadStory } from '../story/loadStory.mjs';
 import { storyGenerator } from '../story/storyGenerator.mjs';
+
+// Components
+import { ChoiceBasic } from '../components/ChoiceBasic.mjs';
 import { MessageBasic } from '../components/MessageBasic.mjs';
-import { triggerEvent } from '../events/triggerEvent.mjs';
-import { hadEvent } from '../events/hadEvent.mjs';
 
 
 
-const { state, dispatch } = window.gameState;
 const pageBodyList = signal([]);
 const pageChoiceList = signal([]);
 
@@ -42,11 +44,13 @@ function tryToLoadNextLine() {
 	processNextStoryLine();
 }
 
+
 //
 // Handle Choice Click
-const handleChoiceClick = (event) => {
-  const choiceIndex = parseInt(event.target.dataset.index);
-  inkStory.ChooseChoiceIndex(choiceIndex);
+const handleChoiceClick = (choice) => {
+	const { index } = choice;
+  // const choiceIndex = parseInt(event.target.dataset.index);
+  inkStory.ChooseChoiceIndex(index);
 	pageBodyList.value = [];
   processNextStoryLine();
 };
@@ -76,27 +80,20 @@ const processNextStoryLine = () => {
 //
 // Render .body when bodyList changes.
 effect(() => {
-	console.log('bodyText.value', pageBodyList.value);
-
 	render(bodyElement, () => html`
 		${pageBodyList.value.map((text) => MessageBasic({text}))}
 	`);
-	// render(bodyElement, () => html`${pageBodyList.value.map(txt => MessageBasic({
-	// 	text: txt,
-	// })))` ;
-	// // render(bodyElement, () => html`${pageBodyList.value.map(txt => html`<p>
-	// // 	${txt}
-	// // </p>`)}`);
 });
+
 //
 // Render .choices
 effect(() => {
+	// ChoiceBasic
 	render(choicesElement, () => html`
-		${pageChoiceList.value.map((choice, index) => html`
-			<button class="choice" data-index="${index}" @click=${handleChoiceClick}>${choice.text}</button>
-		`)}
+		${pageChoiceList.value.map((choice, index) => ChoiceBasic({item: choice, onClick: handleChoiceClick}))}
 	`);
 });
+
 
 //
 // Start processing the story by generating the first line
