@@ -1,64 +1,7 @@
-.page-story {
-  position: relative;
-  height: 100%;
-  padding: 2em;
-  box-sizing: border-box;
+.body {
+  color: var(--color-dialog-color);
+  background-color: var(--color-dialog-background);
+  width: 32em;
 }
 
-.page-story .background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
 
-.page-story .background img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-}
-
-.page-story .story {
-  color: #fff;
-  font-size: 1.2em;
-  margin-bottom: 1em;
-}
-
-.page-story .options {
-  text-align: center;
-  margin-top: 2em;
-}
-
-.page-story .options button {
-  display: inline-block;
-  margin: 0.5em;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  background-color: #fff;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  cursor: pointer;
-}
-
-.page-story .npc {
-  text-align: center;
-  margin-top: 2em;
-}
-
-.page-story .npc img {
-  max-width: 50%;
-  height: auto;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-@media (min-width: 768px) {
-  /* .page-story {
-    max-width: 75%;
-    margin: 0 auto;
-  } */
-}

@@ -1,10 +1,13 @@
 import { parseTags } from './parseTags.mjs';
+import { removeInvisibleCharacters } from '../utils/removeInvisibleCharacters.mjs';
 
 /**
  * Generator function for the Ink Story
+ * @param {InkStory} inkStory - An Ink Story Object.
+ * @param {{name: func}} boundFunctions - Object of function names and functions. Will be passed into the Ink Story.
 */
 export function* storyGenerator(inkStory, boundFunctions) {
-	const tagState = {};
+	let tagState = {};
 
 	for (const [key, value] of Object.entries(boundFunctions)) {
 		inkStory.BindExternalFunction(key, value);
@@ -21,7 +24,7 @@ export function* storyGenerator(inkStory, boundFunctions) {
 		};
 
 		yield {
-			body,
+			body: body.replace(/\n/, ''),
 			tags: tagState,
 			choiceList: inkStory.currentChoices,
 		};

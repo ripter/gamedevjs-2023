@@ -8,8 +8,9 @@ import { html } from '../libs/uhtml/index.mjs';
 */
 export function MessageBasic(props) {
     const { text, avatarURL } = props;
+    console.log(`text: "${text}"`);
 
-    return html`<div class="message message-basic">
+    return html.for(props)`<div class="message message-basic">
         ${avatarURL ? html`<img class="message-avatar" src="${avatarURL}" alt="Avatar">` : ''}
         <div class="message-body">
             <p>${text}</p>

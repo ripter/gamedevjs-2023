@@ -1,7 +1,7 @@
 import { Story } from '../libs/ink-es6.js';
 
 /**
- * Loads a Story from URL.
+ * Loads an Ink Story from URL.
 */
 export async function loadStory(url) {
 	// fetch the JSON file
