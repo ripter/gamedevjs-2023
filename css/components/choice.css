@@ -4,11 +4,12 @@
 
 	border: thin solid white;	
 	cursor: pointer;
-	color: white;
-	background-color: var(--color-black-1a);
+	color: var(--color-choice-color);
+	background-color: var(--color-choice-background);
 	padding: 0.5em;
 	box-shadow: var(--choice-shadow-normal);
 	font-family: var(--choice-font-family);
+  margin-bottom: 0.75em;
 }
 .choice:hover {
 	box-shadow: var(--choice-shadow-hover);
@@ -17,21 +18,4 @@
 .choice .text {
 	font-weight: bold;
 	line-height: 120%;
-}
-
-
-.choice.--active {
-	background-color: white;
-	color: var(--color-black-1a);
-}
-
-.choice.--disabled {
-	cursor: not-allowed;
-	opacity: 0.5;
-	box-shadow: none;
-
-}
-.choice.--disabled:hover {
-	/* box-shadow: var(--choice-shadow-normal); */
-	/* background-color: red; */
 }

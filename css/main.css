@@ -7,7 +7,7 @@
 /* Component Styles */
 @import "components/message.css";
 @import "components/message-basic.css";
-@import "choice.css";
+@import "components/choice.css";
 @import "choice-list.css";
 @import "choice-skill-check.css";
 @import "choice-time-cost.css";

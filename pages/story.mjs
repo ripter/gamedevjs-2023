@@ -14,6 +14,7 @@ import { MessageBasic } from '../components/MessageBasic.mjs';
 
 const pageBodyList = signal([]);
 const pageChoiceList = signal([]);
+const storyIsDone = signal(false);
 
 const storyURL = 'chars/susan/story.json';
 
@@ -41,6 +42,10 @@ document.body.addEventListener('touchend', tryToLoadNextLine);
  * that is why this function will try, but not garentee.
  */
 function tryToLoadNextLine() {
+	// Obvs, don't try to continue someting that is done.
+	if (storyIsDone.value) { return; }
+	// if there are choices, then we can't move on.
+	if (pageChoiceList.value.length !== 0) { return; }
 	processNextStoryLine();
 }
 
@@ -48,6 +53,7 @@ function tryToLoadNextLine() {
 //
 // Handle Choice Click
 const handleChoiceClick = (choice) => {
+	if (storyIsDone.value) { return; }
 	const { index } = choice;
   // const choiceIndex = parseInt(event.target.dataset.index);
   inkStory.ChooseChoiceIndex(index);
@@ -62,7 +68,11 @@ const processNextStoryLine = () => {
 	const { value, done } = genStory.next();
 	// Nothing to do when we are done with the story.
 	// This also happens when we are waiting on the player to make a choice.
-	if (done) { return; }
+	if (done) { 
+		pageBodyList.value = [];
+		pageChoiceList.value = [];
+		return storyIsDone.value = done; 
+	}
   const { body, tags, choiceList } = value;
 
 	// Append the new body text to the existing.
@@ -70,7 +80,6 @@ const processNextStoryLine = () => {
 		...pageBodyList.value,
 		body,
 	].filter(txt => txt !== '');
-	console.log('pageBodyList.value', pageBodyList.value);
 
   // Update the choices element with the available choices
 	pageChoiceList.value = [...choiceList];
@@ -94,6 +103,10 @@ effect(() => {
 	`);
 });
 
+
+effect(() => {
+	console.log('Story is Done: ', storyIsDone.value);
+});
 
 //
 // Start processing the story by generating the first line
