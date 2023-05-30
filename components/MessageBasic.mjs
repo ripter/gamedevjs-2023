@@ -5,14 +5,13 @@ import { html } from '../libs/uhtml/index.mjs';
  * @param {Object} props - The properties object.
  * @param {string} props.text - The message text.
  * @param {string} [props.avatarURL] - The URL of the avatar image. Optional.
+ * @param {string} props.className - space seprated string of CSS class names.
 */
 export function MessageBasic(props) {
-    const { text, avatarURL } = props;
+    const { text, avatarURL, className } = props;
 
-    return html.for(props)`<div class="message message-basic">
+    return html.for(props)`<div class=${`message message-basic ${className}`}>
         ${avatarURL ? html`<img class="message-avatar" src="${avatarURL}" alt="Avatar">` : ''}
-        <div class="message-body">
-            <p>${text}</p>
-        </div>
+        <p class="message-body">${text}</p>
     </div>`;
 }

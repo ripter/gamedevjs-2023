@@ -74,12 +74,13 @@ const processNextStoryLine = () => {
 		return storyIsDone.value = done; 
 	}
   const { body, tags, choiceList } = value;
+	console.log('tags', tags);
 
 	// Append the new body text to the existing.
 	pageBodyList.value = [
 		...pageBodyList.value,
-		body,
-	].filter(txt => txt !== '');
+		{body, tags},
+	].filter(item => item.body !== '');
 
   // Update the choices element with the available choices
 	pageChoiceList.value = [...choiceList];
@@ -90,7 +91,10 @@ const processNextStoryLine = () => {
 // Render .body when bodyList changes.
 effect(() => {
 	render(bodyElement, () => html`
-		${pageBodyList.value.map((text) => MessageBasic({text}))}
+		${pageBodyList.value.map(item => MessageBasic({
+			text: item.body,
+			className: `img--${item.tags.background}`,
+		}))}
 	`);
 });
 
@@ -99,7 +103,11 @@ effect(() => {
 effect(() => {
 	// ChoiceBasic
 	render(choicesElement, () => html`
-		${pageChoiceList.value.map((choice, index) => ChoiceBasic({item: choice, onClick: handleChoiceClick}))}
+		${pageChoiceList.value.map((choice, index) => ChoiceBasic({
+			item: choice, 
+			onClick: handleChoiceClick,
+			//className: `img--${item.tags.background}`,
+		}))}
 	`);
 });
 

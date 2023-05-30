@@ -21,6 +21,8 @@
 @import "page-ship.css";
 @import "page-your-stats.css";
 @import "page-ship-stats.css";
+/* ALL THE IMAGES!!! */
+@import "all_images.css";
 
 body {
 	background-color: var(--color-background);

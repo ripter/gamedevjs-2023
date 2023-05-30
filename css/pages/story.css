@@ -1,7 +1,7 @@
 .body {
   color: var(--color-dialog-color);
   background-color: var(--color-dialog-background);
-  width: 32em;
+  min-width: 32em;
 }
 
 #gamearea {
