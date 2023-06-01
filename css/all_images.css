@@ -4,3 +4,10 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
+
+
+.img--calendar_wall {
+  background-image: url("../imgs/props/calendar_wall_hanging.png");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}

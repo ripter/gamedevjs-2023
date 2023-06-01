@@ -35,14 +35,14 @@ Which Year?
 
 
 == year_1_research ==
-#background: research_lab_overview
 #style: pause_with_click
 #music: uplifting
 ~ timeLeft = RANDOM(2, 4)
 
+#background: research_lab_overview
 In the swirling vortex of scientific pursuit that was the Research Lab, you could find brains so big they had their own gravity. Nestled amongst these knowledge-hungry minds, Susan sat at the epicentre, her fascination for radio hardware acting like a homing signal for anyone lost in the sea of cutting-edge tech.
 
-#background: research_lab_prop_mixer_calendar
+#background: calendar_wall
 Against one wall, a calendar loomed large, each day ticked off with the inevitability of a marching army. One particular date was circled in a red so vibrant it could have been stolen from a firework – the day of the much-anticipated annual Social Mixer. This event was something of a local legend in the Research Lab, an oasis of informality in the desert of intellect, where ideas could be exchanged without the formality of a lab coat.
 
 
